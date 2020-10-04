@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ice-cream-service"
+    }
+  },
+  "defaultProject": "ice-cream-service",
+  "cli": {
+    "analytics": "197580b2-8d9e-4afb-9245-4cba831df0a2"
+  }
 }

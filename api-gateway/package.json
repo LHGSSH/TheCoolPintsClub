@@ -1,0 +1,17 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "description": "This is the API gateway for the Cool Pints Club.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "live": "nodemon ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Group 3",
+  "license": "ISC",
+  "dependencies": {
+    "apikey": "^0.1.2",
+    "express": "^4.17.1"
+  }
+}
