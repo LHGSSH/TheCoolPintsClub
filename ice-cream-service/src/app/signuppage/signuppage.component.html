@@ -1,36 +1,36 @@
 <h1>Sign Up</h1>
 
 <app-navbar></app-navbar>
-<form action="action_page.php" method="post">
-    <ul>
-        <li>
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-        </li>
+<form action="http://localhost:3000/addUser" method="post">
+  <ul>
+    <li>
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+    </li>
 
-        <li>
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      </li>
+    <li>
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required>
+    </li>
 
-        <li>
-          <label for="email"><b>Email</b></label>
-          <input type="email" placeholder="Enter Email" name="email" required>
-        </li>
-          
-        <li>
-          <label for="rname"><b>Name</b></label>
-          <input type="text" placeholder="Enter Name" name="rname" required>
-        </li>
-          
-        <li>
-          <label for="addr"><b>Password</b></label>
-          <input type="text" placeholder="Enter address" name="addr" required>
-        </li>
-          
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="submit">Sign-Up</button>
-          <button type="button" class="cancelbtn">Cancel</button>
-        </div>
-    </ul>
-  </form>
+    <li>
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+    </li>
+
+    <li>
+      <label for="fullName"><b>Name</b></label>
+      <input type="text" placeholder="Enter Name" name="fullName" required>
+    </li>
+
+    <li>
+      <label for="address"><b>Address</b></label>
+      <input type="text" placeholder="Enter address" name="address" required>
+    </li>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="submit">Sign-Up</button>
+      <button type="button" class="cancelbtn">Cancel</button>
+    </div>
+  </ul>
+</form>

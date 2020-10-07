@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const Account = mongoose.model('Account');
 const { stringify } = require('querystring');
 
+app.set('port', process.env.PORT || 3050);
+
 mongoose.connect(
 "mongodb://localhost:27017/Ice-cream-service",
 {useNewUrlParser: true}

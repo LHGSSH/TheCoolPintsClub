@@ -1,6 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 let app = express();
-//const authentication = require('./authentication');
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.set('port', process.env.PORT || 3000);
 
@@ -10,8 +13,8 @@ app.set('port', process.env.PORT || 3000);
 let api = require('./controllers/api');
 
 //Routes
-app.post('/addUser', api.addUser);
-app.put('/editUser', api.editUser);
+app.post('/addUser', urlencodedParser, api.addUser);
+app.put('/editUser', urlencodedParser, api.editUser);
 app.get('/getUser', api.getUser);
 
 // 404 catch-all handler (middleware)

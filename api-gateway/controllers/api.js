@@ -2,24 +2,25 @@
 
 //Route for adding new user
 const addUser = async function(req, res) {
-    //Make sure that all items are being passed in
-    if (req.body.username &&
-        req.body.password &&
-        req.body.email &&
-        req.body.fullName &&
-        req.body.address) {
-            //let newUser = await userService.addUser(req.body);
-            res.json({
-                status: "success",
-                data: newUser
-            });
-        }
-    else {
-        res.json({
-            status: "Invalid object passed in",
-            data: {}
-        });
-    }
+    console.log(req.body.username);
+    // //Make sure that all items are being passed in
+    // if (req.body.username &&
+    //     req.body.password &&
+    //     req.body.email &&
+    //     req.body.fullName &&
+    //     req.body.address) {
+    //         //let newUser = await userService.addUser(req.body);
+    //         res.json({
+    //             status: "success",
+    //             data: newUser
+    //         });
+    //     }
+    // else {
+    //     res.json({
+    //         status: "Invalid object passed in",
+    //         data: {}
+    //     });
+    // }
 }
 
 //Route for editing user
