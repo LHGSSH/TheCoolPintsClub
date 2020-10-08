@@ -1,26 +1,9 @@
 //const userService = require( location of userService )
 
 //Route for adding new user
-const addUser = async function(req, res) {
-    console.log(req.body.username);
-    // //Make sure that all items are being passed in
-    // if (req.body.username &&
-    //     req.body.password &&
-    //     req.body.email &&
-    //     req.body.fullName &&
-    //     req.body.address) {
-    //         //let newUser = await userService.addUser(req.body);
-    //         res.json({
-    //             status: "success",
-    //             data: newUser
-    //         });
-    //     }
-    // else {
-    //     res.json({
-    //         status: "Invalid object passed in",
-    //         data: {}
-    //     });
-    // }
+const addUser = async function(req, res) {    
+    //let newUser = await userService.addUser(req.body);
+    return res.redirect('http://localhost:4200/');
 }
 
 //Route for editing user

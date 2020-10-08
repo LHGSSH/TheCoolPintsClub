@@ -1,7 +1,7 @@
 <h1>Sign Up</h1>
 
 <app-navbar></app-navbar>
-<form action="http://localhost:3000/addUser" method="post">
+<form ng-submit="signupRedirect()" action="http://localhost:3000/addUser" method="post">
   <ul>
     <li>
       <label for="username"><b>Username</b></label>
