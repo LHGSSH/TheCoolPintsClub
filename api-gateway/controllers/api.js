@@ -1,8 +1,9 @@
-//const userService = require( location of userService )
+const userService = require('../../user-service/userService');
 
 //Route for adding new user
-const addUser = async function(req, res) {    
-    //let newUser = await userService.addUser(req.body);
+const addUser = function(req, res) {    
+    let newUser = req.body;
+    userService.addUser(newUser);
     return res.redirect('http://localhost:4200/');
 }
 

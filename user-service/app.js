@@ -1,43 +1,34 @@
 const express = require('express');
 let app = express();
-const mongoose = require("mongoose");
-const Account = mongoose.model('Account');
-const { stringify } = require('querystring');
 
 app.set('port', process.env.PORT || 3050);
 
-mongoose.connect(
-"mongodb://localhost:27017/Ice-cream-service",
-{useNewUrlParser: true}
-);
+require('./models/db');
 
-const db = mongoose.connection;
-
-db.once("open", () => {
-    console.log("Successfully connected to MongoDB using Mongoose!");
-});
-
-
-    Account.create(
-    {
-        username: "JWexler",
-        password: "23456",
-        email: "jon@jonwexler.com",
-        fullname: "john Wexler",
-        address: "9876 high hill drive"
-    },
-    function (error, savedDocument) {
-    if (error) console.log(error);
-    console.log(savedDocument);
-    }
-    );
-
-
-app.get("/",(req, res) => {
+app.get("/", (req, res) => {
     res.send("Hello, Universe!");
 })
 
-app.listen(app.get('port'), function(){
-    console.log( 'Express started on http://localhost:'
-    );
-  });
+// 404 catch-all handler (middleware)
+app.use(function (req, res, next) {
+    res.status(404);
+    res.json({
+        "status": "error",
+        "message": "This page can not be found."
+    });
+});
+
+// 500 error handler (middleware)
+app.use(function (error, req, res, next) {
+    console.error(error.stack);
+    res.status(500);
+    res.json({
+        "status": "error",
+        "message": "An internal error has occurred."
+    });
+});
+
+app.listen(app.get('port'), function () {
+    console.log('Express started on http://localhost:' +
+        app.get('port') + '; press Ctrl-C to terminate.');
+});
