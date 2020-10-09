@@ -7,11 +7,12 @@ module.exports = {
      * @param {Object} formSubmission
      */
     addUser: function (formSubmission) {
-        return User.create(user)
+        return User.create(formSubmission)
             .catch(err => {
                 console.error(err);
                 return [];
             });
+            
     },
 
     /**

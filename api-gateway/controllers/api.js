@@ -1,3 +1,4 @@
+require('../../user-service/models/user');
 const userService = require('../../user-service/userService');
 
 //Route for adding new user
