@@ -1,9 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 let app = express();
-
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.set('port', process.env.PORT || 3000);
 
@@ -13,9 +11,10 @@ app.set('port', process.env.PORT || 3000);
 let api = require('./controllers/api');
 
 //Routes
-app.post('/addUser', urlencodedParser, api.addUser);
-app.put('/editUser', urlencodedParser, api.editUser);
-app.get('/getUser', api.getUser);
+app.use('/test', api.test);
+app.use('/addUser', api.addUser);
+app.use('/editUser', api.editUser);
+app.use('/getUser', api.getUser);
 
 // 404 catch-all handler (middleware)
 app.use(function(req, res, next){

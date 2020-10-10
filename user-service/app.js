@@ -5,9 +5,13 @@ app.set('port', process.env.PORT || 3050);
 
 require('./models/db');
 
-app.get("/", (req, res) => {
+let userService = require('./controllers/userService');
+
+app.get("/test", (req, res) => {
     res.send("Hello, Universe!");
 })
+
+app.post('/addUser', userService.addUser);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {

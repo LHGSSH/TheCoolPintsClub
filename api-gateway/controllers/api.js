@@ -1,12 +1,19 @@
-require('../../user-service/models/user');
-const userService = require('../../user-service/userService');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+const test = createProxyMiddleware({
+    target: 'http://localhost:3050/',
+    changeOrigin: true
+});
 
 //Route for adding new user
-const addUser = function(req, res) {    
-    let newUser = req.body;
-    userService.addUser(newUser);
-    return res.redirect('http://localhost:4200/');
-}
+const addUser = createProxyMiddleware({
+    target: 'http://localhost:3050/',
+    headers: {
+        accept: 'text/html',
+        method: 'POST'
+    },
+    changeOrigin: true
+});
 
 //Route for editing user
 const editUser = async function(req, res) {
@@ -23,6 +30,7 @@ const getUser = async function(req, res) {
 }
 
 module.exports = {
+    test,
     addUser,
     editUser,
     getUser

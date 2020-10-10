@@ -4,14 +4,16 @@ const User = mongoose.model('User');
 module.exports = {
     /**
      * Adds a user to the database.
-     * @param {Object} formSubmission
+     * @param {any} req 
+     * @param {any} res 
      */
-    addUser: function (formSubmission) {
-        return User.create(formSubmission)
-            .catch(err => {
-                console.error(err);
-                return [];
-            });
+    addUser: function(req, res) {
+        console.log(req.body);
+        // return User.create()
+        //     .catch(err => {
+        //         console.error(err);
+        //         return [];
+        //     });
             
     },
 
