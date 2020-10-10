@@ -13,9 +13,4 @@ export class SignuppageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  signupRedirect(): void {
-    console.log("redirect!!!");
-    this.router.navigate[('/')];
-  }
-
 }

@@ -16,6 +16,8 @@ app.get("/test", (req, res) => {
 })
 
 app.post('/addUser', urlencodedParser, userService.addUser);
+app.put('/editUser', urlencodedParser, userService.editUser);
+app.get('/getUser', urlencodedParser, userService.getUser);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {

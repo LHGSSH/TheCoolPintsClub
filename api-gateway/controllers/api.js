@@ -15,18 +15,22 @@ const addUser = createProxyMiddleware({
 });
 
 //Route for editing user
-const editUser = async function(req, res) {
-    let id = req.params.id;
-    //let editedUser = await userService.editUser(id, req.body);
-    res.json(editedStore);
-}
+const editUser = createProxyMiddleware({
+    target: 'http://localhost:3050/',
+    headers: {
+        method: 'PUT'
+    },
+    changeOrigin: true
+});
 
 //Route for getting user by ID
-const getUser = async function(req, res) {
-    let id = req.params.id;
-    //let user = await userService.getUser(id);
-    res.json(user);
-}
+const getUser = createProxyMiddleware({
+    target: 'http://localhost:3050/',
+    headers: {
+        method: 'GET'
+    },
+    changeOrigin: true
+});
 
 module.exports = {
     test,
