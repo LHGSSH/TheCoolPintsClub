@@ -8,7 +8,10 @@ module.exports = {
      * @param {any} res 
      */
     addUser: function (req, res) {
-        User.create(req.body)
+        newUserDetails = req.body;
+        let apiKey = Math.random().toString(36).substring(7);
+        newUserDetails.apiKey = apiKey;
+        User.create(newUserDetails)
             .catch(err => {
                 console.error(err);
                 return [];
