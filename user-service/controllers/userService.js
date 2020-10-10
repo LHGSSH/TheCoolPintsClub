@@ -7,14 +7,13 @@ module.exports = {
      * @param {any} req 
      * @param {any} res 
      */
-    addUser: function(req, res) {
-        console.log(req.body);
-        // return User.create()
-        //     .catch(err => {
-        //         console.error(err);
-        //         return [];
-        //     });
-            
+    addUser: function (req, res) {
+        User.create(req.body)
+            .catch(err => {
+                console.error(err);
+                return [];
+        });
+        return res.redirect('http://localhost:4200/');
     },
 
     /**

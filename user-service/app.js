@@ -1,5 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 let app = express();
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.set('port', process.env.PORT || 3050);
 
@@ -11,7 +15,7 @@ app.get("/test", (req, res) => {
     res.send("Hello, Universe!");
 })
 
-app.post('/addUser', userService.addUser);
+app.post('/addUser', urlencodedParser, userService.addUser);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {

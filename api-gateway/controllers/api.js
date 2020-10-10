@@ -9,7 +9,6 @@ const test = createProxyMiddleware({
 const addUser = createProxyMiddleware({
     target: 'http://localhost:3050/',
     headers: {
-        accept: 'text/html',
         method: 'POST'
     },
     changeOrigin: true
