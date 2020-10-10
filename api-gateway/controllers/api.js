@@ -1,42 +1,39 @@
-//const userService = require( location of userService )
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+const test = createProxyMiddleware({
+    target: 'http://localhost:3050/',
+    changeOrigin: true
+});
 
 //Route for adding new user
-const addUser = async function(req, res) {
-    //Make sure that all items are being passed in
-    if (req.body.username &&
-        req.body.password &&
-        req.body.email &&
-        req.body.fullName &&
-        req.body.address) {
-            //let newUser = await userService.addUser(req.body);
-            res.json({
-                status: "success",
-                data: newUser
-            });
-        }
-    else {
-        res.json({
-            status: "Invalid object passed in",
-            data: {}
-        });
-    }
-}
+const addUser = createProxyMiddleware({
+    target: 'http://localhost:3050/',
+    headers: {
+        method: 'POST'
+    },
+    changeOrigin: true
+});
 
 //Route for editing user
-const editUser = async function(req, res) {
-    let id = req.params.id;
-    //let editedUser = await userService.editUser(id, req.body);
-    res.json(editedStore);
-}
+const editUser = createProxyMiddleware({
+    target: 'http://localhost:3050/',
+    headers: {
+        method: 'PUT'
+    },
+    changeOrigin: true
+});
 
 //Route for getting user by ID
-const getUser = async function(req, res) {
-    let id = req.params.id;
-    //let user = await userService.getUser(id);
-    res.json(user);
-}
+const getUser = createProxyMiddleware({
+    target: 'http://localhost:3050/',
+    headers: {
+        method: 'GET'
+    },
+    changeOrigin: true
+});
 
 module.exports = {
+    test,
     addUser,
     editUser,
     getUser

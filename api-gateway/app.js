@@ -1,6 +1,6 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 let app = express();
-//const authentication = require('./authentication');
 
 app.set('port', process.env.PORT || 3000);
 
@@ -10,9 +10,10 @@ app.set('port', process.env.PORT || 3000);
 let api = require('./controllers/api');
 
 //Routes
-app.post('/addUser', api.addUser);
-app.put('/editUser', api.editUser);
-app.get('/getUser', api.getUser);
+app.use('/test', api.test);
+app.use('/addUser', api.addUser);
+app.use('/editUser', api.editUser);
+app.use('/getUser', api.getUser);
 
 // 404 catch-all handler (middleware)
 app.use(function(req, res, next){
