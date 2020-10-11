@@ -18,7 +18,7 @@ app.get("/test", (req, res) => {
     res.send("Hello, Universe!");
 })
 
-app.post('/addUser', urlencodedParser, userService.addUser);
+app.post('/register', urlencodedParser, userService.register);
 app.put('/editUser', urlencodedParser, userService.editUser);
 app.get('/login', urlencodedParser, userService.login);
 

@@ -6,7 +6,7 @@ const test = createProxyMiddleware({
 });
 
 //Route for adding new user
-const addUser = createProxyMiddleware({
+const register = createProxyMiddleware({
     target: 'http://localhost:3050/',
     headers: {
         method: 'POST'
@@ -34,7 +34,7 @@ const login = createProxyMiddleware({
 
 module.exports = {
     test,
-    addUser,
+    register,
     editUser,
     login
 };

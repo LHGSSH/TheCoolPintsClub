@@ -11,7 +11,7 @@ let api = require('./controllers/api');
 
 //Routes
 app.use('/test', api.test);
-app.use('/addUser', api.addUser);
+app.use('/register', api.register);
 app.use('/editUser', api.editUser);
 app.use('/login', api.login);
 
