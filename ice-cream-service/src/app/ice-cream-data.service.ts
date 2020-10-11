@@ -8,8 +8,7 @@ import { AuthResponse } from './authresponse';
 })
 export class IceCreamDataService {
 
-  constructor(private http: HttpClient, private apiBaseUrl: String) { 
-    apiBaseUrl = "http://localhost:3000";
+  constructor(private http: HttpClient) {
   }
 
   public login(user: User): Promise<AuthResponse> {
@@ -20,9 +19,15 @@ export class IceCreamDataService {
   }
   private makeAuthApiCall(urlPath: string, user: User):
     Promise<AuthResponse> {
-    const url: string = `${this.apiBaseUrl}/${urlPath}`;
+    let apiBaseUrl = "http://localhost:3000";
+    const url: string = `${apiBaseUrl}/${urlPath}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
     return this.http
-      .post(url, user)
+      .post(url, user, httpOptions)
       .toPromise()
       .then(response => response as AuthResponse)
       .catch(this.handleError);

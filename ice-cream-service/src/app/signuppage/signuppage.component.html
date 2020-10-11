@@ -1,36 +1,33 @@
 <h1>Sign Up</h1>
 
 <app-navbar></app-navbar>
-<form action="http://localhost:3000/addUser" method="post">
-  <ul>
-    <li>
-      <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-    </li>
+<form (submit)="onRegisterSubmit()">
+  <div role="alert" *ngIf="formError" class="alert alert-danger">{{ formError }}</div>
+  <div class="form-group">
+    <label for="username"><b>Username</b></label>
+    <input type="form-control" placeholder="Enter Username" name="username" required [(ngModel)]="credentials.username">
+  </div>
 
-    <li>
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required>
-    </li>
+  <div class="form-group">
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" required [(ngModel)]="credentials.email">
+  </div>
 
-    <li>
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-    </li>
+  <div class="form-group">
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required [(ngModel)]="credentials.password">
+  </div>
 
-    <li>
-      <label for="fullName"><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" name="fullName" required>
-    </li>
+  <div class="form-group">
+    <label for="fullName"><b>Full Name</b></label>
+    <input type="form-control" placeholder="Enter Full Name" name="fullName" required [(ngModel)]="credentials.fullName">
+  </div>
 
-    <li>
-      <label for="address"><b>Address</b></label>
-      <input type="text" placeholder="Enter address" name="address" required>
-    </li>
+  <div class="form-group">
+    <label for="address"><b>Address</b></label>
+    <input type="form-control" placeholder="Enter Address" name="address" required [(ngModel)]="credentials.address">
+  </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="submit">Sign-Up</button>
-      <button type="button" class="cancelbtn">Cancel</button>
-    </div>
-  </ul>
+  <button type="submit">Sign-Up</button>
+  <button type="button" class="cancelbtn">Cancel</button>
 </form>

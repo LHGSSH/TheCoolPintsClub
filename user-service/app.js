@@ -4,7 +4,7 @@ let app = express();
 const passport = require('passport');
 
 // create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const JSONParser = bodyParser.json();
 
 app.set('port', process.env.PORT || 3050);
 
@@ -14,13 +14,20 @@ let userService = require('./controllers/userService');
 
 app.use(passport.initialize());
 
+//Allow requests from the client app
+app.use('/', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    next();
+});
+
 app.get("/test", (req, res) => {
     res.send("Hello, Universe!");
 })
 
-app.post('/register', urlencodedParser, userService.register);
-app.put('/editUser', urlencodedParser, userService.editUser);
-app.get('/login', urlencodedParser, userService.login);
+app.post('/register', JSONParser, userService.register);
+app.put('/editUser', JSONParser, userService.editUser);
+app.get('/login', JSONParser, userService.login);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {
