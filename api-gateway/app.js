@@ -13,7 +13,7 @@ let api = require('./controllers/api');
 app.use('/test', api.test);
 app.use('/addUser', api.addUser);
 app.use('/editUser', api.editUser);
-app.use('/getUser', api.getUser);
+app.use('/login', api.login);
 
 // 404 catch-all handler (middleware)
 app.use(function(req, res, next){

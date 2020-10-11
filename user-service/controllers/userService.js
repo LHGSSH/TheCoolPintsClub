@@ -60,6 +60,5 @@ module.exports = {
                     .json(info);
             }
         })(req, res);
-
     }
 }

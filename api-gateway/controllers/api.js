@@ -24,7 +24,7 @@ const editUser = createProxyMiddleware({
 });
 
 //Route for getting user by ID
-const getUser = createProxyMiddleware({
+const login = createProxyMiddleware({
     target: 'http://localhost:3050/',
     headers: {
         method: 'GET'
@@ -36,5 +36,5 @@ module.exports = {
     test,
     addUser,
     editUser,
-    getUser
+    login
 };
