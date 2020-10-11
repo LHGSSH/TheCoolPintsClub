@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 let app = express();
+const passport = require('passport');
+let userService = require('./controllers/userService');
 
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -8,8 +10,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.set('port', process.env.PORT || 3050);
 
 require('./models/db');
+require('./config/passport');
 
-let userService = require('./controllers/userService');
+app.use(passport.initialize());
 
 app.get("/test", (req, res) => {
     res.send("Hello, Universe!");
