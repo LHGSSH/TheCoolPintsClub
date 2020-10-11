@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('login') loginButton: ElementRef;
+  @ViewChild('signup') signupButton: ElementRef;
+  constructor(public authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    if (this.authenticationService.isLoggedIn()) {
+      console.log("navbar here! you're logged in!");
+    }
   }
 
 }

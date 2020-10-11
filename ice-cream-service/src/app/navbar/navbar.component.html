@@ -9,9 +9,12 @@
         <div class="navbar-item">About</div>
     </a>
     <a href="/login">
-        <div class="navbar-item">Login</div>
+        <div class="navbar-item" *ngIf="!authenticationService.isLoggedIn()">Login</div>
     </a>
     <a href="/signup">
-        <div class="navbar-item">Signup</div>
+        <div class="navbar-item" *ngIf="!authenticationService.isLoggedIn()">Sign Up</div>
+    </a>
+    <a href="/account">
+        <div class="navbar-item" *ngIf="authenticationService.isLoggedIn()">{{authenticationService.getCurrentUser().fullName}}</div>
     </a>
 </div>
