@@ -23,15 +23,19 @@ module.exports = {
 
     /**
      * Edits a user in the database.
-     * @param {Number} id 
-     * @param {JSON} newUserDetails 
+     * @param {any} req
+     * @param {any} res
      */
-    editUser: function (id, newUserDetails) {
-        return User.findByIdAndUpdate(id, newUserDetails, { new: true })
+    editUser: function (req, res) {
+        console.log("edit user function");
+        console.log(req.body);
+        editedUser = new User(req.body);
+        User.findByIdAndUpdate(editedUser._id, editedUser, { new: true })
             .catch(err => {
                 console.error(err);
                 return [];
             });
+        res.status(200).json({ "message":"success" });
     },
 
     /**

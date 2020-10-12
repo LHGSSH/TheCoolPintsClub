@@ -1,4 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-accountpage',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router, public authenticationService: AuthenticationService) {
+
+  }
 
   ngOnInit(): void {
   }
 
+  logout(): void{
+    this.authenticationService.logout();
+    this.router.navigate(['/']);
+  }
 }

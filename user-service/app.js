@@ -5,6 +5,7 @@ const passport = require('passport');
 
 // create application/x-www-form-urlencoded parser
 const JSONParser = bodyParser.json();
+const urlParser = bodyParser.urlencoded({ extended: true });
 
 app.set('port', process.env.PORT || 3050);
 
@@ -26,7 +27,7 @@ app.get("/test", (req, res) => {
 })
 
 app.post('/register', JSONParser, userService.register);
-app.put('/editUser', JSONParser, userService.editUser);
+app.put('/editUser', urlParser, userService.editUser);
 app.get('/login', JSONParser, userService.login);
 
 // 404 catch-all handler (middleware)
