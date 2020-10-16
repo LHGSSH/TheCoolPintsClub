@@ -13,6 +13,7 @@ import { LoginpageComponent } from './loginpage/loginpage.component';
 import { SignuppageComponent } from './signuppage/signuppage.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AccountpageComponent } from './accountpage/accountpage.component';
+import { SearchpageComponent } from './searchpage/searchpage.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AccountpageComponent } from './accountpage/accountpage.component';
     LoginpageComponent,
     SignuppageComponent,
     NavbarComponent,
-    AccountpageComponent
+    AccountpageComponent,
+    SearchpageComponent
   ],
   imports: [
     BrowserModule,
