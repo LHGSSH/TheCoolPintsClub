@@ -16,9 +16,14 @@ export class AccountpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const logoutButton = document.getElementById("logout");
+
+    logoutButton.addEventListener('click', event => {
+      this.logout();
+    });
   }
 
-  logout(): void{
+  logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['/']);
   }
