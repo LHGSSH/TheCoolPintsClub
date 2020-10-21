@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
   public isLoggedIn(): boolean {
     const token: string = this.getToken();
-    if (token) {
+    if (token || token != undefined) {
       const payload = JSON.parse(atob(token.split('.')[1]));
       return payload.exp > (Date.now() / 1000);
     } else {

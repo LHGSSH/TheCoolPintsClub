@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 let app = express();
 const passport = require('passport');
 
@@ -14,13 +15,7 @@ require('./config/passport');
 let userService = require('./controllers/userService');
 
 app.use(passport.initialize());
-
-//Allow requests from the client app
-app.use('/', (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    next();
-});
+app.use(cors());
 
 app.get("/test", (req, res) => {
     res.send("Hello, Universe!");
