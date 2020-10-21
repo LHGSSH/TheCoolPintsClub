@@ -44,6 +44,7 @@ module.exports = {
      * @param {any} res
      */
     login: function (req, res) {
+        console.log(req.body);
         passport.authenticate('local', (err, user, info) => {
             let token;
             if (err) {
