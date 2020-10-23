@@ -37,6 +37,10 @@ export class AuthenticationService {
   public logout(): void {
     this.storage.removeItem('ice-cream-token');
   }
+  public editUser(user: User): Promise<any> {
+    return this.iceCreamDataService.editUser(user)
+    .then((authResp: AuthResponse) => this.saveToken(authResp.token));
+  }
   public register(user: User): Promise<any> {
     return this.iceCreamDataService.register(user)
       .then((authResp: AuthResponse) => this.saveToken(authResp.token));

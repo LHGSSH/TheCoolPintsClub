@@ -22,7 +22,7 @@ app.get("/test", (req, res) => {
 })
 
 app.post('/register', JSONParser, userService.register);
-app.put('/editUser', urlParser, userService.editUser);
+app.put('/editUser', JSONParser, userService.editUser);
 app.post('/login', JSONParser, userService.login);
 
 // 404 catch-all handler (middleware)
