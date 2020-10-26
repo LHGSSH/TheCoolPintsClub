@@ -20,7 +20,10 @@ app.use('/', (req, res, next) => {
 
   app.get("/inventoryTest", (req,res,next) => {
     res.send("Hello, Inventory service");
+    inventoryService.search();
   });
+
+  //app.get('/search',);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {
