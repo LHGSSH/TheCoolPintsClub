@@ -18,6 +18,7 @@ app.use('/', (req, res, next) => {
 
 //Routes
 app.use('/test', api.test);
+app.use('/inventoryTest', api.inventoryTest);
 app.use('/register', api.register);
 app.use('/editUser', api.editUser);
 app.use('/login', api.login);
