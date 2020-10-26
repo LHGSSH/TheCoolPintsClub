@@ -2,10 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 let app = express();
 
+// create application/x-www-form-urlencoded parser
+const JSONParser = bodyParser.json();
+const urlParser = bodyParser.urlencoded({ extended: true });
+
 app.set('port', process.env.PORT || 3060);
 
+require('./models/db');
 let inventoryService = require('./controllers/inventoryService');
 
+//Allow requests from the client app
 app.use('/', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
