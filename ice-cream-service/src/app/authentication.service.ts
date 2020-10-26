@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
   public isLoggedIn(): boolean {
     const token: string = this.getToken();
-    if (token) {
+    if (token || token != undefined) {
       const payload = JSON.parse(atob(token.split('.')[1]));
       return payload.exp > (Date.now() / 1000);
     } else {
@@ -36,6 +36,10 @@ export class AuthenticationService {
   }
   public logout(): void {
     this.storage.removeItem('ice-cream-token');
+  }
+  public editUser(user: User): Promise<any> {
+    return this.iceCreamDataService.editUser(user)
+    .then((authResp: AuthResponse) => this.saveToken(authResp.token));
   }
   public register(user: User): Promise<any> {
     return this.iceCreamDataService.register(user)

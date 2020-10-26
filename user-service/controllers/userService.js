@@ -26,16 +26,15 @@ module.exports = {
      * @param {any} req
      * @param {any} res
      */
-    editUser: function (req, res) {
-        console.log("edit user function");
-        console.log(req.body);
-        editedUser = new User(req.body);
-        User.findByIdAndUpdate(editedUser._id, editedUser, { new: true })
+    editUser: async function (req, res) {
+        editedUserDetails = req.body;
+        editedUser = await User.findOneAndUpdate({username: editedUserDetails.username}, editedUserDetails, { new: true })
             .catch(err => {
                 console.error(err);
                 return [];
             });
-        res.status(200).json({ "message":"success" });
+        const token = editedUser.generateJwt();
+        res.status(200).json({ token });
     },
 
     /**

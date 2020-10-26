@@ -9,13 +9,6 @@ app.set('port', process.env.PORT || 3000);
 
 let api = require('./controllers/api');
 
-//Allow requests from the client app
-app.use('/', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  next();
-});
-
 //Routes
 app.use('/test', api.test);
 app.use('/register', api.register);

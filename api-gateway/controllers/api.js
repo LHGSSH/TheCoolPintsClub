@@ -27,7 +27,7 @@ const editUser = createProxyMiddleware({
 const login = createProxyMiddleware({
     target: 'http://localhost:3050/',
     headers: {
-        method: 'GET'
+        method: 'POST'
     },
     changeOrigin: true
 });
