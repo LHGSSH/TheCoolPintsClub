@@ -32,6 +32,15 @@ const login = createProxyMiddleware({
     changeOrigin: true
 });
 
+//Route for searching inventory DB
+const search = createProxyMiddleware({
+    target: 'http://localhost:3060/',
+    headers:{
+        method: 'PUT'
+    },
+    changeOrigin: true
+});
+
 module.exports = {
     test,
     register,

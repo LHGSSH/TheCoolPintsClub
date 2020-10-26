@@ -21,6 +21,7 @@ app.use('/test', api.test);
 app.use('/register', api.register);
 app.use('/editUser', api.editUser);
 app.use('/login', api.login);
+app.use('/search', api.search);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {
