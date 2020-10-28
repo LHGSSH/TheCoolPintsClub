@@ -1,13 +1,15 @@
 <p>searchpage works!</p>
 
-<form action="http://localhost:3000/search" method="PUT">
+<app-navbar></app-navbar>
+<form action="http://localhost:3000/search" method="POST">
 
-
-
+    <label for="searchQuery"><b>Search</b></label>
+    <input id="searchForm" type="form-control" placeholder="Enter your Search Query" name="searchQuery">
+    
 </form>
+<button id="search" type="button" class="search" >Search</button>
 
-<!--<input id="searchbar" onkeyup="searchIceCream()" type="text"
-        name="search" placeholder="Search Ice Cream"> 
+<!--
 
 
 <input type="text"  value="Search" ng-model="searchquery">

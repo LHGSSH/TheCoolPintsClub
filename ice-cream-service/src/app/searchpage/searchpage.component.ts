@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-searchpage',
@@ -7,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchpageComponent implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit(): void {
+    let searchButton = document.getElementById("search");
+    searchButton.addEventListener("click", event=>{this.search()});
   }
 
-  searchIceCream(): void{
- 
+  search(): void{
+    console.log("At search()");
+    //let searchForm = document
   }
 
 }

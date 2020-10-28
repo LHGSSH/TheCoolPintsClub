@@ -36,7 +36,7 @@ const login = createProxyMiddleware({
 const search = createProxyMiddleware({
     target: 'http://localhost:3060/',
     headers:{
-        method: 'PUT'
+        method: 'POST'
     },
     changeOrigin: true
 });
