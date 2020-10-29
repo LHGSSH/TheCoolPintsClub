@@ -7,17 +7,20 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class SearchpageComponent implements OnInit {
 
-  
+  public searchQuery: string = "";
   constructor() { }
 
   ngOnInit(): void {
-    let searchButton = document.getElementById("search");
-    searchButton.addEventListener("click", event=>{this.search()});
+    // let searchButton = document.getElementById("search");
+    // searchButton.addEventListener("click", event=>{this.search()});
   }
 
   search(): void{
     console.log("At search()");
-    //let searchForm = document
+
+    
   }
+
+  
 
 }

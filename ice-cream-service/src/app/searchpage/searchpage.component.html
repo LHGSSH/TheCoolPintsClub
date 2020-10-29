@@ -1,13 +1,13 @@
 <p>searchpage works!</p>
 
 <app-navbar></app-navbar>
-<form action="http://localhost:3000/search" method="POST">
+<form (submit)="search()" action="http://localhost:3000/search" method="POST">
 
-    <label for="searchQuery"><b>Search</b></label>
-    <input id="searchForm" type="form-control" placeholder="Enter your Search Query" name="searchQuery">
-    
+    <label for="searchQuery"><b>Search</b> </label>
+    <input id="searchForm" type="form-control" placeholder="Enter your Search Query" name="searchQuery" [(ngModel)]=searchQuery>
+    <button id="search" type="submit" class="search" >Search</button>
 </form>
-<button id="search" type="button" class="search" >Search</button>
+
 
 <!--
 
