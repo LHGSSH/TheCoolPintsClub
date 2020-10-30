@@ -7,7 +7,7 @@ module.exports = {
      * 
      */
     search: function (req, res){
-        Flavor.findOne({flavor: 'Apple Cinnamon'}).exec();
+        Flavor.find({ flavor: 'Apple Cinnamon' }).exec();
         
     }
 }

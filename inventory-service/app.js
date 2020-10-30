@@ -19,8 +19,9 @@ app.use('/', (req, res, next) => {
   });
 
   app.get("/inventoryTest", (req,res,next) => {
-    res.send("Hello, Inventory service");
-    inventoryService.search();
+    console.log(inventoryService.search());
+    res.send("Hello, Inventory service ");
+    
   });
 
   //app.get('/search',);
