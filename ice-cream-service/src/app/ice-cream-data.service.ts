@@ -39,8 +39,17 @@ export class IceCreamDataService {
   private search(urlPath: string, searchQuery: string):
     Promise<AuthResponse>{
       let apiBaseUrl = "http://localhost:3000";
-      const url: string = `${apiBaseUrl}/${urlPath}`; 
-      return
+      const url: string = `${apiBaseUrl}/${urlPath}`;
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json'
+        })
+      }; 
+      return this.http
+        .post(url, searchQuery, httpOptions)
+        .toPromise()
+        .then(response => response as AuthResponse)
+        .catch(this.handleError);
     }
   
 
