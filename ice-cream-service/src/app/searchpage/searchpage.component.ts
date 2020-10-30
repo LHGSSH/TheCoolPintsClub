@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+
 
 @Component({
   selector: 'app-searchpage',
@@ -8,7 +12,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class SearchpageComponent implements OnInit {
 
   public searchQuery: string = "";
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router, public authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
