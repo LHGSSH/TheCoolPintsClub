@@ -45,5 +45,6 @@ module.exports = {
     test,
     register,
     editUser,
-    login
+    login,
+    search
 };
