@@ -3,8 +3,8 @@
 <app-navbar></app-navbar>
 <form (submit)="search()" action="http://localhost:3000/search" method="POST">
 
-    <label for="searchQuery"><b>Search</b> </label>
-    <input id="searchForm" type="form-control" placeholder="Enter your Search Query" name="searchQuery" [(ngModel)]=searchQuery>
+    <label for="searchForm"><b>Search</b> </label>
+    <input id="searchForm" type="text" placeholder="Enter your Search Query" name="searchQuery" [(ngModel)]=searchQuery>
     <button id="search" type="submit" class="search" >Search</button>
 </form>
 

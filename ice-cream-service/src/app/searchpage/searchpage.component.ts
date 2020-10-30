@@ -19,9 +19,9 @@ export class SearchpageComponent implements OnInit {
 
   search(): void{
     console.log("At search()");
-    //this.searchQuery = document.getFormById(searchForm).getText()
-
-    this.authenticationService.search(this.searchQuery);
+    this.searchQuery = document.getElementById("searchForm").inputMode;
+    console.log(this.searchQuery);
+    //this.authenticationService.search(this.searchQuery);
     
   }
 
