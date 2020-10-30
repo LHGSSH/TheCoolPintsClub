@@ -11,8 +11,6 @@ export class SearchpageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // let searchButton = document.getElementById("search");
-    // searchButton.addEventListener("click", event=>{this.search()});
   }
 
   search(): void{
