@@ -41,4 +41,8 @@ export class AuthenticationService {
     return this.iceCreamDataService.register(user)
       .then((authResp: AuthResponse) => this.saveToken(authResp.token));
   }
+
+  public search(searchQuery: string): Promise<any>{
+    return this.iceCreamDataService.searchCaller(searchQuery)
+  }
 }
