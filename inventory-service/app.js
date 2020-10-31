@@ -10,7 +10,7 @@ app.set('port', process.env.PORT || 3060);
 
 require('./models/db');
 let inventoryService = require('./controllers/inventoryService');
-console.log('i made it in');
+
 //Allow requests from the client app
 app.use('/', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -18,8 +18,9 @@ app.use('/', (req, res, next) => {
     next();
   });
 
-  app.get("/inventoryTest", (req,res,next) => {
-    console.log(inventoryService.search());
+  app.get("/inventoryTest", async function (req,res,next) {
+    let searchReturn = await inventoryService.search();
+    console.log(searchReturn);
     res.send("Hello, Inventory service ");
     
   });

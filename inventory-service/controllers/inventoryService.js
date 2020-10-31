@@ -6,8 +6,7 @@ module.exports = {
     /**
      * 
      */
-    search: function (req, res){
-        Flavor.find({ flavor: 'Apple Cinnamon' }).exec();
-        
+    search: async function (req, res){
+        return await Flavor.findOne({ flavor: 'Apple Cinnamon' }).exec();
     }
 }
