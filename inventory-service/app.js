@@ -19,10 +19,8 @@ app.use('/', (req, res, next) => {
   });
 
   app.get("/inventoryTest", async function (req,res,next) {
-    let searchReturn = await inventoryService.testsearch();
-    console.log(searchReturn);
+    await inventoryService.testsearch();
     res.send("Hello, Inventory service ");
-    
   });
 
   app.get('/search',JSONParser,inventoryService.search);
