@@ -14,7 +14,6 @@ module.exports = {
      */
     register: function (req, res) {
         newUser = new User(req.body);
-        newUser.apiKey = Math.random().toString(36).substring(7);
         newUser.save((err) => {
             if (err) {
                 res.status(404).json(err);

@@ -13,8 +13,7 @@ let userSchema = mongoose.Schema({
         unique: true
     },
     fullName: String,
-    address: String,
-    apiKey: String
+    address: String
 });
 
 userSchema.methods.validPassword = function (password) {
@@ -28,7 +27,6 @@ userSchema.methods.generateJwt = function () {
         _id: this._id,
         username: this.username,
         fullName: this.fullName,
-        apiKey: this.apiKey,
         exp: parseInt(expiry.getTime() / 1000, 10),
     }, 'thisIsSecret');
 };
