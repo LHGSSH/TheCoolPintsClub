@@ -5,6 +5,11 @@ const test = createProxyMiddleware({
     changeOrigin: true
 });
 
+const inventoryTest = createProxyMiddleware({
+    target: 'http://localhost:3060/',
+    changeOrigin: true
+})
+
 //Route for adding new user
 const register = createProxyMiddleware({
     target: 'http://localhost:3050/',
@@ -43,6 +48,7 @@ const search = createProxyMiddleware({
 
 module.exports = {
     test,
+    inventoryTest,
     register,
     editUser,
     login,
