@@ -17,6 +17,8 @@ let userService = require('./controllers/userService');
 app.use(passport.initialize());
 app.use(cors());
 
+app.use(userService.verifyToken);
+
 app.get("/test", (req, res) => {
     res.send("Hello, Universe!");
 })

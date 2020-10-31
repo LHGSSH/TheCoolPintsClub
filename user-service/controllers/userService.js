@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const passport = require('passport');
+const token = process.env.TOKEN || "recipeT0k3n";
 
 module.exports = {
     /**
@@ -19,6 +20,27 @@ module.exports = {
                 res.status(200).json({ token });
             }
         });
+    },
+
+    /**
+     * Middleware function to verify API token in usersController, called in a separate part
+     * @param {Number} id 
+     * @param {JSON} newUserDetails 
+     */
+    verifyToken: (req, res, next) => {
+        let token = req.query.apiToken;
+        if (token) {
+            User.findOne({ apiToken: token })
+                .then(user => {
+                    if (user) next();
+                    else next(new Error("Invalid API token."));
+                })
+                .catch(error => {
+                    next(new Error(error.message));
+                });
+        } else {
+            next(new Error("Invalid API token."));
+        }
     },
 
     /**
@@ -43,6 +65,9 @@ module.exports = {
      * @param {any} res
      */
     login: function (req, res) {
+        // Check API Key
+        // var token = req.query.token;
+
         passport.authenticate('local', (err, user, info) => {
             let token;
             if (err) {
