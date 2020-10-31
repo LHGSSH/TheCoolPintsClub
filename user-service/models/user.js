@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const randToken = require("rand-token");
 
 //defines the User Schema
 let userSchema = mongoose.Schema({
@@ -13,7 +14,15 @@ let userSchema = mongoose.Schema({
         unique: true
     },
     fullName: String,
-    address: String
+    address: String,
+    apiToken: String
+});
+
+// Generate API token in user.js
+userSchema.pre("save", function(next) { 
+    let user = this; 
+    if (!user.apiToken) user.apiToken = 
+    randToken.generate(16); next(); 
 });
 
 userSchema.methods.validPassword = function (password) {

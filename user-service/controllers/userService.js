@@ -1,9 +1,23 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const passport = require('passport');
+const token = process.env.TOKEN || "recipeT0k3n";
 
-// Check for the API Key, called in a separate part
-verifyToken: (req, res, next) => { if (req.query.apiToken === token) next(); else next(new Error("Invalid API token.")); }
+
+
+// verifyToken: (req, res, next) => { 
+//     let token = req.query.apiToken; 
+//     if (token) { User.findOne({ apiToken: token }) 
+//         .then(user => { 
+//             if (user) next(); 
+//             else next(new Error("Invalid API token.")); }) .catch(error => { next(new Error(error.message)); }); } else { next(new Error("Invalid API token.")); } }
+
+
+// .use(usersController.verifyToken)
+
+
+
+
 
 
 module.exports = {
@@ -14,6 +28,7 @@ module.exports = {
      */
     register: function (req, res) {
         newUser = new User(req.body);
+        newUser.apiKey = Math.random().toString(36).substring(7);
         newUser.save((err) => {
             if (err) {
                 res.status(404).json(err);
@@ -22,6 +37,16 @@ module.exports = {
                 res.status(200).json({ token });
             }
         });
+    },
+
+    /**
+     * Middleware function to verify API token in usersController, called in a separate part
+     * @param {Number} id 
+     * @param {JSON} newUserDetails 
+     */ 
+    verifyToken: (req, res, next) => { 
+        if (req.query.apiToken === token) next();
+        else next(new Error("Invalid API token.")); 
     },
 
     /**

@@ -21,6 +21,8 @@ app.use('/', (req, res, next) => {
     next();
 });
 
+app.use(userService.verifyToken);
+
 app.get("/test", (req, res) => {
     res.send("Hello, Universe!");
 })
