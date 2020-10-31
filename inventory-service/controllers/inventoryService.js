@@ -8,5 +8,9 @@ module.exports = {
      */
     search: async function (req, res){
         return await Flavor.findOne({ flavor: 'Apple Cinnamon' }).exec();
+    },
+
+    testsearch: async function (req, res){
+        return await Flavor.findOne({ flavor: 'Apple Cinnamon' }).exec();
     }
 }

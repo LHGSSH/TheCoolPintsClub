@@ -19,13 +19,13 @@ app.use('/', (req, res, next) => {
   });
 
   app.get("/inventoryTest", async function (req,res,next) {
-    let searchReturn = await inventoryService.search();
+    let searchReturn = await inventoryService.testsearch();
     console.log(searchReturn);
     res.send("Hello, Inventory service ");
     
   });
 
-  //app.get('/search',);
+  app.get('/search',JSONParser,inventoryService.search);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {
