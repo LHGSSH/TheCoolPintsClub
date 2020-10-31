@@ -3,23 +3,6 @@ const User = mongoose.model('User');
 const passport = require('passport');
 const token = process.env.TOKEN || "recipeT0k3n";
 
-
-
-// verifyToken: (req, res, next) => { 
-//     let token = req.query.apiToken; 
-//     if (token) { User.findOne({ apiToken: token }) 
-//         .then(user => { 
-//             if (user) next(); 
-//             else next(new Error("Invalid API token.")); }) .catch(error => { next(new Error(error.message)); }); } else { next(new Error("Invalid API token.")); } }
-
-
-// .use(usersController.verifyToken)
-
-
-
-
-
-
 module.exports = {
     /**
      * Adds a user to the database. Also generates an API key and a JWT for the user.
@@ -59,7 +42,7 @@ module.exports = {
             next(new Error("Invalid API token."));
         }
     },
-    
+
     /**
      * Edits a user in the database.
      * @param {Number} id 
