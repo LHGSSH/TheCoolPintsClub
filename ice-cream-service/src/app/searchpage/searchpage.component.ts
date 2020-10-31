@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+
 
 @Component({
   selector: 'app-searchpage',
@@ -7,13 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchpageComponent implements OnInit {
 
-  constructor() { }
+  public searchQuery: string = "";
+  constructor(private http: HttpClient, private router: Router, public authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
-  searchIceCream(): void{
- 
+  search(): void{
+    console.log("At search()");
+    this.searchQuery = document.getElementById("searchForm").inputMode;
+    console.log(this.searchQuery);
+    //this.authenticationService.search(this.searchQuery);
+    
   }
+
+  
 
 }
