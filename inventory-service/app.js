@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 let app = express();
 
 // create application/x-www-form-urlencoded parser
@@ -11,19 +12,16 @@ app.set('port', process.env.PORT || 3060);
 require('./models/db');
 let inventoryService = require('./controllers/inventoryService');
 
+app.use(cors());
+
 //Allow requests from the client app
 app.use('/', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     next();
-  });
+});
 
-  app.get("/inventoryTest", async function (req,res,next) {
-    await inventoryService.testsearch();
-    res.send("Hello, Inventory service ");
-  });
-
-  app.get('/search',JSONParser,inventoryService.search);
+app.post('/search', urlParser, inventoryService.search);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {

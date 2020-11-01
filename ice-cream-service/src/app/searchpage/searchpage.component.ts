@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication.service';
-
+import { IceCreamDataService } from '../ice-cream-data.service';
 
 @Component({
   selector: 'app-searchpage',
@@ -11,20 +10,20 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class SearchpageComponent implements OnInit {
 
+  public formError: string = '';
   public searchQuery: string = "";
-  constructor(private http: HttpClient, private router: Router, public authenticationService: AuthenticationService) { }
+  
+  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
 
   ngOnInit(): void {
   }
 
   search(): void{
-    console.log("At search()");
-    this.searchQuery = document.getElementById("searchForm").inputMode;
-    console.log(this.searchQuery);
-    //this.authenticationService.search(this.searchQuery);
-    
+    if (!this.searchQuery) {
+      this.formError = "You must enter a search term"
+    }
+    else {
+      this.iceCreamDataService.searchCaller(this.searchQuery);
+    }
   }
-
-  
-
 }

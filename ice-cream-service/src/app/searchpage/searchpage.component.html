@@ -1,13 +1,12 @@
-<p>searchpage works!</p>
-
 <app-navbar></app-navbar>
 <form (submit)="search()">
+    <div role="alert" *ngIf="formError" class="alert alert-danger">{{ formError }}</div>
     <div class="search">
         <label for="searchForm"><b>Search</b> </label>
-        <input id="searchForm" type="text" placeholder="Enter your Search Query" name="searchQuery" [(ngModel)]=searchQuery>
+        <input id="searchForm" type="form-control" placeholder="Enter your Search Query" name="searchQuery"
+            [(ngModel)]="searchQuery">
     </div>
-    //sdfsdfsdf
-    <button id="search" type="submit" class="search" >Search</button>
+    <button id="search" type="submit" class="search">Search</button>
 </form>
 
 
