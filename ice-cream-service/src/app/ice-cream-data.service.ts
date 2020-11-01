@@ -50,12 +50,12 @@ export class IceCreamDataService {
     return new AuthResponse();
   }
 
-  public searchCaller(searchQuery: string): Promise<AuthResponse> {
-    return this.search('search', searchQuery);
+  public searchCaller(searchObject: Object): Promise<Object> {
+    return this.search('search', searchObject);
   }
 
-  private search(urlPath: string, searchQuery: string):
-    Promise<AuthResponse>{
+  private search(urlPath: string, searchObject: Object):
+    Promise<Object>{
       let apiBaseUrl = "http://localhost:3000";
       const url: string = `${apiBaseUrl}/${urlPath}`;
       const httpOptions = {
@@ -64,9 +64,9 @@ export class IceCreamDataService {
         })
       }; 
       return this.http
-        .post(url, searchQuery, httpOptions)
+        .post(url, searchObject, httpOptions)
         .toPromise()
-        .then(response => response as AuthResponse)
+        .then(response => response as Object)
         .catch(this.handleError);
     }
   
