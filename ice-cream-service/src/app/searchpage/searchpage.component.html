@@ -3,8 +3,7 @@
     <div role="alert" *ngIf="formError" class="alert alert-danger">{{ formError }}</div>
     <div class="search">
         <label for="searchForm"><b>Search</b> </label>
-        <input id="searchForm" type="form-control" placeholder="Enter your Search Query" name="searchQuery"
-            [(ngModel)]="searchQuery">
+        <input type="form-control" placeholder="Enter your Search Query" name="searchQuery" [(ngModel)]="searchObject.searchQuery">
     </div>
     <button id="search" type="submit" class="search">Search</button>
 </form>
