@@ -11,10 +11,16 @@ import { IceCreamDataService } from '../ice-cream-data.service';
 export class SearchpageComponent implements OnInit {
 
   public formError: string = '';
+  public searchResults = [
+    {
+      "flavor": "nope",
+      "inStock": false
+    }
+  ]
   public searchObject = {
     searchQuery: ''
   }
-  
+
   constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
 
   ngOnInit(): void {
@@ -26,20 +32,30 @@ export class SearchpageComponent implements OnInit {
     }
     else {
       this.iceCreamDataService.searchCaller(this.searchObject)
-      .then((response) => this.displayResults(response))
-      .catch((message) => this.formError = message);
+        .then((response) => this.displayResults(response))
+        .catch((message) => this.formError = message);
     }
   }
 
   displayResults(response): void {
-    console.log(response.result);
+    let resultsList = document.getElementById("resultsList");
+    resultsList.innerHTML = "";
 
-    Array.from(response.result).forEach(element =>{
-      console.log(element);
-    });
+    this.searchResults = Array.from(response.result);
+    console.log(this.searchResults);
 
-    
-
-
+    if (this.searchResults === undefined || this.searchResults.length == 0) {
+      this.formError = "No results found";
+    }
+    else {
+      for (let i = 0; i < this.searchResults.length; i++) {
+        let titleElement = document.createElement("li");
+        titleElement.innerHTML = "<li><b>Flavor:</b> " + this.searchResults[i].flavor + "</li>", "text/html";
+        resultsList.append(titleElement);
+        let inStockElement = document.createElement("li");
+        inStockElement.innerHTML = "<li><b>In Stock:</b> " + this.searchResults[i].inStock + "</li><br/>", "text/html";
+        resultsList.append(inStockElement);
+      }
+    }
   }
 }
