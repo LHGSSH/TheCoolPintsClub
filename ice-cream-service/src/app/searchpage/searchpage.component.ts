@@ -33,5 +33,13 @@ export class SearchpageComponent implements OnInit {
 
   displayResults(response): void {
     console.log(response.result);
+
+    Array.from(response.result).forEach(element =>{
+      console.log(element);
+    });
+
+    
+
+
   }
 }
