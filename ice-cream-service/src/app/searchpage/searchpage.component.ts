@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IceCreamDataService } from '../ice-cream-data.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-searchpage',
@@ -21,7 +22,8 @@ export class SearchpageComponent implements OnInit {
     searchQuery: ''
   }
 
-  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
+  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService, 
+    public authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
@@ -57,5 +59,9 @@ export class SearchpageComponent implements OnInit {
         resultsList.append(inStockElement);
       }
     }
+  }
+
+  checkout(): void{
+    this.router.navigate(['/checkout']);
   }
 }
