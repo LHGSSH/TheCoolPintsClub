@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const passport = require('passport');
-// const token = process.env.TOKEN || "recipeT0k3n";
+const token = process.env.TOKEN || "recipeT0k3n";
 
 module.exports = {
     /**
@@ -17,31 +17,36 @@ module.exports = {
                 res.status(404).json(err);
             } else {
                 const token = newUser.generateJwt();
+                console.log("Api Key: " + newUser.apiKey);
                 res.status(200).json({ token });
             }
         });
     },
 
-    // /**
-    //  * Middleware function to verify API token in usersController, called in a separate part
-    //  * @param {Number} id 
-    //  * @param {JSON} newUserDetails 
-    //  */
-    // verifyToken: (req, res, next) => {
-    //     let token = req.query.apiToken;
-    //     if (token) {
-    //         User.findOne({ apiToken: token })
-    //             .then(user => {
-    //                 if (user) next();
-    //                 else next(new Error("Invalid API token."));
-    //             })
-    //             .catch(error => {
-    //                 next(new Error(error.message));
-    //             });
-    //     } else {
-    //         next(new Error("Invalid API token."));
-    //     }
-    // },
+    /**
+     * Middleware function to verify API token in usersController, called in a separate part
+     * @param {Number} id 
+     * @param {JSON} newUserDetails 
+     */
+    verifyToken: (req, res, next) => {
+        let token = req.query.apiToken;
+        // Check whether a token exists as the query parameter
+        if (token) {
+            // Search for a user with the provided API token
+            User.findOne({ apiToken: token })
+                .then(user => {
+                    // Call next if a user with the API token exists
+                    if (user) next();
+                    else next(new Error("Invalid API token."));
+                })
+                // Pass an error to the error handler
+                .catch(error => {
+                    next(new Error(error.message));
+                });
+        } else {
+            next(new Error("Invalid API token."));
+        }
+    },
 
     /**
      * Edits a user in the database.
