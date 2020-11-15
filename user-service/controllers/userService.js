@@ -17,6 +17,7 @@ module.exports = {
                 res.status(404).json(err);
             } else {
                 const token = newUser.generateJwt();
+                // Print out the generated ApiKey -- Works
                 console.log("Api Key: " + newUser.apiKey);
                 res.status(200).json({ token });
             }
@@ -81,6 +82,7 @@ module.exports = {
                     .json(err);
             }
             if (user) {
+                // let signedToken = jsonWebToken.sign;
                 token = user.generateJwt();
                 res
                     .status(200)

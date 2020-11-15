@@ -22,7 +22,8 @@ let userSchema = mongoose.Schema({
 userSchema.pre("save", function(next) { 
     let user = this; 
     if (!user.apiToken) user.apiToken = 
-    randToken.generate(16); next(); 
+    randToken.generate(16); 
+    next(); 
 });
 
 userSchema.methods.validPassword = function (password) {
