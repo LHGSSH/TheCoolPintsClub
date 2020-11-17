@@ -5,6 +5,7 @@ let inventorySchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    inStock: Boolean
+    stock: Number,
+    price: Number
 });
 mongoose.model('inventory', inventorySchema);
