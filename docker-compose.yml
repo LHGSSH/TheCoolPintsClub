@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  api:
+    depends_on:
+      - user
+      - inventory
+    image: api:1.0
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+  user:
+    image: user:1.0
+    build: ./user-service
+    ports:
+      - "3050:3050"
+  inventory:
+    image: inventory:1.0
+    build: ./inventory-service
+    ports:
+      - "3060:3060"
+  ice-cream:
+    depends_on:
+      - api
+    image: ice-cream:1.0
+    build: ./ice-cream-service
+    ports:
+      - "4200:4200"
