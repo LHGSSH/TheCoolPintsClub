@@ -19,7 +19,7 @@ export class IceCreamDataService {
   }
   private makeAuthApiCall(urlPath: string, user: User):
     Promise<AuthResponse> {
-    let apiBaseUrl = "http://localhost:3000";
+    let apiBaseUrl = "http://api:3000";
     const url: string = `${apiBaseUrl}/${urlPath}`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -33,7 +33,7 @@ export class IceCreamDataService {
       .catch(this.handleError);
   }
   public editUser(user: User): Promise<AuthResponse> {
-    let apiBaseUrl = "http://localhost:3000";
+    let apiBaseUrl = "http://api:3000";
     const url: string = `${apiBaseUrl}/editUser`;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -56,7 +56,7 @@ export class IceCreamDataService {
 
   private search(urlPath: string, searchObject: Object):
     Promise<Object>{
-      let apiBaseUrl = "http://localhost:3000";
+      let apiBaseUrl = "http://api:3000";
       const url: string = `${apiBaseUrl}/${urlPath}`;
       const httpOptions = {
         headers: new HttpHeaders({
