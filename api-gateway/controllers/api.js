@@ -1,18 +1,18 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const test = createProxyMiddleware({
-    target: 'http://localhost:3050/',
+    target: 'http://user:3050/',
     changeOrigin: true
 });
 
 const inventoryTest = createProxyMiddleware({
-    target: 'http://localhost:3060/',
+    target: 'http://inventory:3060/',
     changeOrigin: true
 })
 
 //Route for adding new user
 const register = createProxyMiddleware({
-    target: 'http://localhost:3050/',
+    target: 'http://user:3050/',
     headers: {
         method: 'POST'
     },
@@ -21,7 +21,7 @@ const register = createProxyMiddleware({
 
 //Route for editing user
 const editUser = createProxyMiddleware({
-    target: 'http://localhost:3050/',
+    target: 'http://user:3050/',
     headers: {
         method: 'PUT'
     },
@@ -30,7 +30,7 @@ const editUser = createProxyMiddleware({
 
 //Route for getting user by ID
 const login = createProxyMiddleware({
-    target: 'http://localhost:3050/',
+    target: 'http://user:3050/',
     headers: {
         method: 'POST'
     },
@@ -39,7 +39,7 @@ const login = createProxyMiddleware({
 
 //Route for searching inventory DB
 const search = createProxyMiddleware({
-    target: 'http://localhost:3060/',
+    target: 'http://inventory:3060/',
     headers:{
         method: 'POST'
     },
