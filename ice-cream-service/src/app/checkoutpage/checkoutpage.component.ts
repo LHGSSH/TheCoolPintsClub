@@ -14,7 +14,8 @@ export class CheckoutpageComponent implements OnInit {
   public searchResults = [
     {
       "flavor": "nope",
-      "inStock": false
+      "stock": 0,
+      "price": 0.00
     }
   ]
   public searchObject = {
@@ -41,8 +42,8 @@ export class CheckoutpageComponent implements OnInit {
     let resultsList = document.getElementById("resultsList");
     resultsList.innerHTML = "";
 
-    this.searchResults = Array.from(response.result);
-    console.log(this.searchResults);
+    //this.searchResults = Array.from(response.result);
+    //console.log(this.searchResults);
 
     if (this.searchResults === undefined || this.searchResults.length == 0) {
       this.formError = "No results found";
@@ -52,9 +53,12 @@ export class CheckoutpageComponent implements OnInit {
         let titleElement = document.createElement("li");
         titleElement.innerHTML = "<li><b>Flavor:</b> " + this.searchResults[i].flavor + "</li>", "text/html";
         resultsList.append(titleElement);
-        let inStockElement = document.createElement("li");
-        inStockElement.innerHTML = "<li><b>In Stock:</b> " + this.searchResults[i].inStock + "</li><br/>", "text/html";
-        resultsList.append(inStockElement);
+        let stockElement = document.createElement("li");
+        stockElement.innerHTML = "<li><b>In Stock:</b> " + this.searchResults[i].stock + "</li>", "text/html";
+        resultsList.append(stockElement);
+        let priceElement = document.createElement("li");
+        priceElement.innerHTML = "<li><b>Price:</b> $" + this.searchResults[i].price + "</li><br/>", "text/html";
+        resultsList.append(priceElement);
       }
     }
   }
