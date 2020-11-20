@@ -7,6 +7,7 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { SignuppageComponent } from './signuppage/signuppage.component';
 import { AccountpageComponent } from './accountpage/accountpage.component';
 import { SearchpageComponent } from './searchpage/searchpage.component';
+import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginpageComponent},
   { path: 'signup', component: SignuppageComponent},
   { path: 'account', component: AccountpageComponent},
-  { path: 'search', component: SearchpageComponent}
+  { path: 'search', component: SearchpageComponent},
+  { path: 'checkout', component: CheckoutpageComponent}
 ];
 
 @NgModule({

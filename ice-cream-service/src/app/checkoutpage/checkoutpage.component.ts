@@ -2,29 +2,26 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IceCreamDataService } from '../ice-cream-data.service';
-import { AuthenticationService } from '../authentication.service';
 
 @Component({
-  selector: 'app-searchpage',
-  templateUrl: './searchpage.component.html',
-  styleUrls: ['./searchpage.component.css']
+  selector: 'app-checkoutpage',
+  templateUrl: './checkoutpage.component.html',
+  styleUrls: ['./checkoutpage.component.css']
 })
-export class SearchpageComponent implements OnInit {
+export class CheckoutpageComponent implements OnInit {
 
   public formError: string = '';
   public searchResults = [
     {
       "flavor": "nope",
-      "stock": 0,
-      "price": 0.00
+      "inStock": false
     }
   ]
   public searchObject = {
     searchQuery: ''
   }
 
-  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService, 
-    public authenticationService: AuthenticationService) { }
+  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
 
   ngOnInit(): void {
   }
@@ -45,6 +42,7 @@ export class SearchpageComponent implements OnInit {
     resultsList.innerHTML = "";
 
     this.searchResults = Array.from(response.result);
+    console.log(this.searchResults);
 
     if (this.searchResults === undefined || this.searchResults.length == 0) {
       this.formError = "No results found";
@@ -54,17 +52,11 @@ export class SearchpageComponent implements OnInit {
         let titleElement = document.createElement("li");
         titleElement.innerHTML = "<li><b>Flavor:</b> " + this.searchResults[i].flavor + "</li>", "text/html";
         resultsList.append(titleElement);
-        let stockElement = document.createElement("li");
-        stockElement.innerHTML = "<li><b>In Stock:</b> " + this.searchResults[i].stock + "</li>", "text/html";
-        resultsList.append(stockElement);
-        let priceElement = document.createElement("li");
-        priceElement.innerHTML = "<li><b>Price:</b> $" + this.searchResults[i].price + "</li><br/>", "text/html";
-        resultsList.append(priceElement);
+        let inStockElement = document.createElement("li");
+        inStockElement.innerHTML = "<li><b>In Stock:</b> " + this.searchResults[i].inStock + "</li><br/>", "text/html";
+        resultsList.append(inStockElement);
       }
     }
   }
 
-  checkout(): void{
-    this.router.navigate(['/checkout']);
-  }
 }
