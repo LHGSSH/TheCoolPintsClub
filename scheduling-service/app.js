@@ -10,8 +10,9 @@ app.set('port', process.env.PORT || 3090);
 
 require('./models/db');
 let inventoryService = require('./controllers/schedulingService');
+const schedulingService = require('./controllers/schedulingService');
 
-//app.use(cors());
+schedulingService.checkout();
 
 //Allow requests from the client app
 app.use('/', (req, res, next) => {

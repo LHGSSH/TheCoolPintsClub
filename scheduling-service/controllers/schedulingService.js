@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-//const Inventory = mongoose.model('');
+const Schedule = mongoose.model('schedule');
 
 module.exports = {
     /**
@@ -8,6 +8,6 @@ module.exports = {
      * @param {*} res 
      */
     checkout: async function (req,res){
-
+        
     }
 }
