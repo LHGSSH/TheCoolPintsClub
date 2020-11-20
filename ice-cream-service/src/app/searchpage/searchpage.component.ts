@@ -44,7 +44,7 @@ export class SearchpageComponent implements OnInit {
     let resultsList = document.getElementById("resultsList");
     resultsList.innerHTML = "";
 
-    this.searchResults = Array.from(response.result);
+    //this.searchResults = Array.from(response.result);
 
     if (this.searchResults === undefined || this.searchResults.length == 0) {
       this.formError = "No results found";
