@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Inventory = mongoose.model('inventory');
+const Inventory = mongoose.model('Inventory');
 
 module.exports = {
     /**

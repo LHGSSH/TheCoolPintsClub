@@ -39,5 +39,5 @@ userSchema.methods.generateJwt = function () {
         exp: parseInt(expiry.getTime() / 1000, 10),
     }, 'thisIsSecret');
 };
-
-mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = { User };
