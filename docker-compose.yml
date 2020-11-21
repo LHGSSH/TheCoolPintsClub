@@ -9,6 +9,7 @@ services:
     environment:
       - USER_SERVICE_ENDPOINT=http://localhost:3050/
       - INVENTORY_SERVICE_ENDPOINT=http://localhost:3060/
+      - SCHEDULING_SERVICE_ENDPOINT=http://localhost:3090/
   user:
     build: ./user-service
     ports:
@@ -18,6 +19,11 @@ services:
     build: ./inventory-service
     ports:
       - "3060:3060"
+    network_mode: host
+  schduling:
+    build: ./scheduling-service
+    ports:
+      - "3090:3090"
     network_mode: host
   ice-cream:
     build: ./ice-cream-service
