@@ -44,6 +44,8 @@ export class SearchpageComponent implements OnInit {
 
     this.searchResults = Array.from(response.result);
 
+    console.log(this.searchResults);
+
     if (this.searchResults === undefined || this.searchResults.length == 0) {
       this.formError = "No results found";
     }

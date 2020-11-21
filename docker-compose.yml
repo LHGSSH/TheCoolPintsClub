@@ -5,24 +5,27 @@ services:
     depends_on:
       - user
       - inventory
-    image: api:1.0
     build: ./api-gateway
     ports:
       - "3000:3000"
+    # network_mode: host
+    environment:
+      - USER_SERVICE_ENDPOINT=http://localhost:3050/
+      - INVENTORY_SERVICE_ENDPOINT=http://localhost:3060/
   user:
-    image: user:1.0
     build: ./user-service
     ports:
       - "3050:3050"
+    # network_mode: host
   inventory:
-    image: inventory:1.0
     build: ./inventory-service
     ports:
       - "3060:3060"
+    # network_mode: host
   ice-cream:
     depends_on:
       - api
-    image: ice-cream:1.0
     build: ./ice-cream-service
     ports:
       - "4200:4200"
+    # network_mode: host
