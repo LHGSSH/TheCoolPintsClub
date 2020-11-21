@@ -42,7 +42,7 @@ export class CheckoutpageComponent implements OnInit {
     let resultsList = document.getElementById("resultsList");
     resultsList.innerHTML = "";
 
-    //this.searchResults = Array.from(response.result);
+    this.searchResults = Array.from(response.result);
     console.log(this.searchResults);
 
     if (this.searchResults === undefined || this.searchResults.length == 0) {

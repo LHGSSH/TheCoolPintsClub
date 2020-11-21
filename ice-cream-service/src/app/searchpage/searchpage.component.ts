@@ -12,6 +12,7 @@ import { AuthenticationService } from '../authentication.service';
 export class SearchpageComponent implements OnInit {
 
   public formError: string = '';
+  public flavorList = [];
   public searchResults = [
     {
       "flavor": "nope",
@@ -44,7 +45,7 @@ export class SearchpageComponent implements OnInit {
     let resultsList = document.getElementById("resultsList");
     resultsList.innerHTML = "";
 
-    //this.searchResults = Array.from(response.result);
+    this.searchResults = Array.from(response.result);
 
     console.log(this.searchResults);
 
@@ -62,11 +63,22 @@ export class SearchpageComponent implements OnInit {
         let priceElement = document.createElement("li");
         priceElement.innerHTML = "<li><b>Price:</b> $" + this.searchResults[i].price + "</li><br/>", "text/html";
         resultsList.append(priceElement);
+
+        this.flavorList.push(this.searchResults[i].flavor);
       }
     }
+
+    for(let i = 0; i < this.flavorList.length; i++){
+      console.log(this.flavorList[i]); 
+    }
+
   }
 
   checkout(): void{
     this.router.navigate(['/checkout']);
   }
+
+  // this.post("/checkout", function(req, res){
+  //    res.send(this.flavorList);
+  // });
 }
