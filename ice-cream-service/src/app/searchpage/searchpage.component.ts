@@ -44,7 +44,7 @@ export class SearchpageComponent implements OnInit {
     let resultsList = document.getElementById("resultsList");
     resultsList.innerHTML = "";
 
-    this.searchResults = Array.from(response.result);
+    //this.searchResults = Array.from(response.result);
 
     console.log(this.searchResults);
 
