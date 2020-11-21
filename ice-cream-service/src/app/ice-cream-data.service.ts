@@ -9,6 +9,7 @@ import { AuthResponse } from './authresponse';
 export class IceCreamDataService {
 
   private apiBaseUrl = 'http://localhost:3000';
+  private iceCreamBaseUrl = 'http://localhost:4200';
   private dataSeviceCart = [];
 
   constructor(private http: HttpClient) {
@@ -88,8 +89,15 @@ export class IceCreamDataService {
     }
   }
 
-  public getCartData(): Object{
-    return this.dataSeviceCart;
+  public checkout(urlPath: string, cartData: Object): Object{
+    const url: string = `${this.apiBaseUrl}/${urlPath}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }; 
+    return this.http
+      .post(url, cartData, httpOptions);
   }
 
 }
