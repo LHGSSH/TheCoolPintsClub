@@ -9,6 +9,7 @@ import { AuthResponse } from './authresponse';
 export class IceCreamDataService {
 
   private apiBaseUrl = 'http://localhost:3000';
+  private dataSeviceCart = [];
 
   constructor(private http: HttpClient) {
   }
@@ -69,5 +70,26 @@ export class IceCreamDataService {
         .catch(this.handleError);
     }
   
+  public setDataServiceCart(dataSeviceCart: Object[]){
+    console.log("in setDataServiceCart");
+    this.dataSeviceCart = dataSeviceCart;
+
+    for(let i = 0; i < this.dataSeviceCart.length; i++){
+      console.log(this.dataSeviceCart[i]);
+    }
+  }
+
+  public addToDataServiceCart(cartData: Object){
+    console.log("in addToDataServiceCart");
+    this.dataSeviceCart.push(cartData);
+
+    for(let i = 0; i < this.dataSeviceCart.length; i++){
+      console.log(this.dataSeviceCart[i]);
+    }
+  }
+
+  public getCartData(): Object{
+    return this.dataSeviceCart;
+  }
 
 }

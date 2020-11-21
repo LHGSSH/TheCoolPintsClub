@@ -22,6 +22,8 @@ export class CheckoutpageComponent implements OnInit {
     searchQuery: ''
   }
 
+  public userCart = [];
+
   constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
 
   ngOnInit(): void {
@@ -61,6 +63,10 @@ export class CheckoutpageComponent implements OnInit {
         resultsList.append(priceElement);
       }
     }
+  }
+
+  displayCart(): void{
+    
   }
 
 }

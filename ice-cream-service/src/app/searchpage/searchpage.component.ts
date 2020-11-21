@@ -64,7 +64,9 @@ export class SearchpageComponent implements OnInit {
         priceElement.innerHTML = "<li><b>Price:</b> $" + this.searchResults[i].price + "</li><br/>", "text/html";
         resultsList.append(priceElement);
 
-        this.flavorList.push(this.searchResults[i].flavor);
+        //this.flavorList.push(this.searchResults[i].flavor);
+        this.flavorList.push(this.searchResults[i]);
+        //this.iceCreamDataService.addToDataServiceCart(this.searchResults[i]);
       }
     }
 
@@ -75,10 +77,9 @@ export class SearchpageComponent implements OnInit {
   }
 
   checkout(): void{
+    this.iceCreamDataService.setDataServiceCart(this.flavorList);
     this.router.navigate(['/checkout']);
   }
 
-  // this.post("/checkout", function(req, res){
-  //    res.send(this.flavorList);
-  // });
+  
 }
