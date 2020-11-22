@@ -70,6 +70,7 @@ export class SearchpageComponent implements OnInit {
   }
 
   checkout(): void{
+    this.iceCreamDataService.setDataServiceCart(this.flavorList);
     this.iceCreamDataService.checkout('/checkout', this.flavorList);
   }
 

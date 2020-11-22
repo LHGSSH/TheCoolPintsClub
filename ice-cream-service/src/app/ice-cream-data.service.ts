@@ -10,7 +10,7 @@ export class IceCreamDataService {
 
   private apiBaseUrl = 'http://localhost:3000';
   private iceCreamBaseUrl = 'http://localhost:4200';
-  //private dataSeviceCart = [];
+  private dataSeviceCart = [];
 
   constructor(private http: HttpClient) {
   }
@@ -71,25 +71,22 @@ export class IceCreamDataService {
         .catch(this.handleError);
     }
   
-  // public setDataServiceCart(dataSeviceCart: Object[]){
-  //   console.log("in setDataServiceCart");
-  //   this.dataSeviceCart = dataSeviceCart;
+  public setDataServiceCart(dataSeviceCart: Object[]){
+    console.log("in setDataServiceCart");
+    this.dataSeviceCart = dataSeviceCart;
 
-  //   for(let i = 0; i < this.dataSeviceCart.length; i++){
-  //     console.log(this.dataSeviceCart[i]);
-  //   }
-  // }
+    for(let i = 0; i < this.dataSeviceCart.length; i++){
+      console.log(this.dataSeviceCart[i]);
+    }
+  }
 
-  // public addToDataServiceCart(cartData: Object){
-  //   console.log("in addToDataServiceCart");
-  //   this.dataSeviceCart.push(cartData);
-
-  //   for(let i = 0; i < this.dataSeviceCart.length; i++){
-  //     console.log(this.dataSeviceCart[i]);
-  //   }
-  // }
+  public getCartData(){
+    return this.dataSeviceCart;
+  }
 
   public checkout(urlPath: string, cartData: Object[]): Object{
+
+    this.dataSeviceCart = cartData;
 
     for(let i = 0; i < cartData.length; i++){
       console.log(cartData[i]);
@@ -102,7 +99,16 @@ export class IceCreamDataService {
       })
     }; 
     return this.http
-      .post(url, cartData, httpOptions);
+      .post(url, cartData, httpOptions)
+      .subscribe((Response) => {
+         console.log(cartData[0]);
+      });
+
+    // return this.http
+    //   .post(url, cartData, httpOptions)
+    //   .toPromise()
+    //   .then(response => response as Object)
+    //   .catch(this.handleError);
   }
 
 }

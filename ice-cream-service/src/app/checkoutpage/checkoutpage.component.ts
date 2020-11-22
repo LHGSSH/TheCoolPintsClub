@@ -11,6 +11,7 @@ import { IceCreamDataService } from '../ice-cream-data.service';
 export class CheckoutpageComponent implements OnInit {
 
   public formError: string = '';
+  public cartData: Object[];
   public searchResults = [
     {
       "flavor": "nope",
@@ -22,11 +23,21 @@ export class CheckoutpageComponent implements OnInit {
     searchQuery: ''
   }
 
-  public userCart = [];
+  public userCart: String[];
 
   constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
 
   ngOnInit(): void {
+    // this.http.get('/checkout', this.userCart);
+    // for(let i = 0; i < this.userCart.length; i++){
+    //   console.log(this.userCart[i]);
+    // }
+    console.log("in igOnInit");
+    this.cartData = this.iceCreamDataService.getCartData();
+
+    for(let i = 0; i < this.cartData.length; i++){
+      console.log(this.cartData[i]);
+    }
   }
 
   search(): void {
@@ -38,9 +49,16 @@ export class CheckoutpageComponent implements OnInit {
         .then((response) => this.displayResults(response))
         .catch((message) => this.formError = message);
     }
+
+    // for(let i = 0; i < this.cartData.length; i++){
+    //   console.log("in search");
+    //   console.log(this.cartData[i]);
+    // }
+
   }
 
   displayResults(response): void {
+
     let resultsList = document.getElementById("resultsList");
     resultsList.innerHTML = "";
 
