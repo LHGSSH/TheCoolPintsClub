@@ -64,20 +64,12 @@ export class SearchpageComponent implements OnInit {
         priceElement.innerHTML = "<li><b>Price:</b> $" + this.searchResults[i].price + "</li><br/>", "text/html";
         resultsList.append(priceElement);
 
-        //this.flavorList.push(this.searchResults[i].flavor);
         this.flavorList.push(this.searchResults[i]);
-        //this.iceCreamDataService.addToDataServiceCart(this.searchResults[i]);
       }
     }
-
-    for(let i = 0; i < this.flavorList.length; i++){
-      console.log(this.flavorList[i]); 
-    }
-
   }
 
   checkout(): void{
-    this.iceCreamDataService.setDataServiceCart(this.flavorList);
     this.iceCreamDataService.checkout('/checkout', this.flavorList);
   }
 
