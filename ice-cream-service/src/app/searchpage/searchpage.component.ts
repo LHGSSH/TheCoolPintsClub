@@ -69,7 +69,7 @@ export class SearchpageComponent implements OnInit {
         let addToCartElement = document.createElement("button");
         addToCartElement.innerHTML =  "<button class='btn addToCart' type='button'>Add to Cart</button>", "text/html";
         
-        addToCartElement.onclick = () => {this.cartService.addToCart(this.searchResults[i]); console.log("item added")};        
+        addToCartElement.onclick = () => {this.cartService.addToCart(this.searchResults[i]); window.alert(this.searchResults[i].flavor + ' has been added to the cart!');};        
         // addToCartElement.onclick(this.cartService.addToCart(this.searchResults[i]));
         // addToCartElement.onclick = this.cartService.addToCart(this.searchResults[i])
         
