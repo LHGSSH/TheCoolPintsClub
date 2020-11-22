@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
 import { ShippingComponent } from './shipping/shippingcomponent';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-
+import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +32,10 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     NavbarComponent,
     AccountpageComponent,
     SearchpageComponent,
-    // ProductListComponent,
-    // ProductAlertsComponent,
     ProductDetailsComponent,
     CartComponent,
     ShippingComponent
+    CheckoutpageComponent
   ],
   imports: [
     BrowserModule,

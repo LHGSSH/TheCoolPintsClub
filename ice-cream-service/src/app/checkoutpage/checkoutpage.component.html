@@ -1,4 +1,7 @@
+<p>checkoutpage works!</p>
+
 <app-navbar></app-navbar>
+
 <form (submit)="search()">
     <div role="alert" *ngIf="formError" class="alert alert-danger">{{ formError }}</div>
     <div class="search">
@@ -10,8 +13,4 @@
 
 <ul id="resultsList"></ul>
 
-<a href="/checkout">
-    <button id="checkOut" type="button" class="checkout" >Checkout</button>
-</a>
-
-<ul id="resultsList"></ul>
+<ul id="cartList"></ul>
