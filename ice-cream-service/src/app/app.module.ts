@@ -34,7 +34,7 @@ import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
     SearchpageComponent,
     ProductDetailsComponent,
     CartComponent,
-    ShippingComponent
+    ShippingComponent,
     CheckoutpageComponent
   ],
   imports: [
