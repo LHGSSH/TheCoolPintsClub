@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IceCreamDataService } from '../ice-cream-data.service';
-import { AuthenticationService } from '../authentication.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-searchpage',
   templateUrl: './searchpage.component.html',
   styleUrls: ['./searchpage.component.css']
 })
+
 export class SearchpageComponent implements OnInit {
 
   public formError: string = '';
@@ -23,8 +24,7 @@ export class SearchpageComponent implements OnInit {
     searchQuery: ''
   }
 
-  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService, 
-    public authenticationService: AuthenticationService) { }
+  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService, private cartService: CartService) { }
 
   ngOnInit(): void {
   }
@@ -44,9 +44,7 @@ export class SearchpageComponent implements OnInit {
     let resultsList = document.getElementById("resultsList");
     resultsList.innerHTML = "";
 
-    //this.searchResults = Array.from(response.result);
-
-    console.log(this.searchResults);
+    this.searchResults = Array.from(response.result);
 
     if (this.searchResults === undefined || this.searchResults.length == 0) {
       this.formError = "No results found";
@@ -62,6 +60,10 @@ export class SearchpageComponent implements OnInit {
         let priceElement = document.createElement("li");
         priceElement.innerHTML = "<li><b>Price:</b> $" + this.searchResults[i].price + "</li><br/>", "text/html";
         resultsList.append(priceElement);
+        let addToCartElement = document.createElement("button");
+        addToCartElement.innerHTML =  "<button class='btn addToCart' type='button'>Add to Cart</button>", "text/html";
+        addToCartElement.onclick = () => {this.cartService.addToCart(this.searchResults[i]); window.alert(this.searchResults[i].flavor + ' has been added to the cart!');};        
+        resultsList.append(addToCartElement);
       }
     }
   }
