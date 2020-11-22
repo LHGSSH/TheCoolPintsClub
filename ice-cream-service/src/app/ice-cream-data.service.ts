@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 import { AuthResponse } from './authresponse';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,7 @@ export class IceCreamDataService {
     return this.dataSeviceCart;
   }
 
+
   public checkout(urlPath: string, cartData: Object[]): Object{
 
     this.dataSeviceCart = cartData;
@@ -99,10 +101,7 @@ export class IceCreamDataService {
       })
     }; 
     return this.http
-      .post(url, cartData, httpOptions)
-      .subscribe((Response) => {
-         console.log(cartData[0]);
-      });
+      .post(url, cartData, httpOptions);
 
     // return this.http
     //   .post(url, cartData, httpOptions)
@@ -110,5 +109,30 @@ export class IceCreamDataService {
     //   .then(response => response as Object)
     //   .catch(this.handleError);
   }
+
+
+  // public checkout(urlPath: string, cartData: Object[]): Observable<Object[]>{
+
+  //   this.dataSeviceCart = cartData;
+
+  //   for(let i = 0; i < cartData.length; i++){
+  //     console.log(cartData[i]);
+  //   }
+
+  //   const url: string = `${this.apiBaseUrl}/${urlPath}`;
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json'
+  //     })
+  //   }; 
+  //   return this.http
+  //     .post<Object[]>(url, cartData, httpOptions);
+
+  //   // return this.http
+  //   //   .post(url, cartData, httpOptions)
+  //   //   .toPromise()
+  //   //   .then(response => response as Object)
+  //   //   .catch(this.handleError);
+  // }
 
 }

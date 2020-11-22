@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { IceCreamDataService } from '../ice-cream-data.service';
 
 @Component({
@@ -11,7 +12,8 @@ import { IceCreamDataService } from '../ice-cream-data.service';
 export class CheckoutpageComponent implements OnInit {
 
   public formError: string = '';
-  public cartData: Object[];
+  //public cartData: Object[];
+  public cartData: Observable<Object[]>;
   public searchResults = [
     {
       "flavor": "nope",
@@ -28,17 +30,18 @@ export class CheckoutpageComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
 
   ngOnInit(): void {
-    // this.http.get('/checkout', this.userCart);
-    // for(let i = 0; i < this.userCart.length; i++){
+    this.http.get('/checkout');
+
+    // for(let i = 0; i < this.cartData.length; i++){
     //   console.log(this.userCart[i]);
     // }
     console.log("in igOnInit");
-    this.cartData = this.iceCreamDataService.getCartData();
-
-    for(let i = 0; i < this.cartData.length; i++){
-      console.log(this.cartData[i]);
-    }
+    // this.cartData = this.iceCreamDataService.getCartData();
   }
+  
+  // getHeroes (): Observable<Object[]> {
+  //   return this.http.get<Object[]>('/search');
+  // }
 
   search(): void {
     if (!this.searchObject.searchQuery) {
