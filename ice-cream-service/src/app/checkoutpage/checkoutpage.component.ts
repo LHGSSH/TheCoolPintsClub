@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { IceCreamDataService } from '../ice-cream-data.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { IceCreamDataService } from '../ice-cream-data.service';
 export class CheckoutpageComponent implements OnInit {
 
   public formError: string = '';
+  //public cartData: Object[];
+  public cartData: Observable<Object[]>;
   public searchResults = [
     {
       "flavor": "nope",
@@ -22,9 +25,18 @@ export class CheckoutpageComponent implements OnInit {
     searchQuery: ''
   }
 
+  public userCart: String[];
+
   constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
 
   ngOnInit(): void {
+    this.http.get('/checkout');
+
+    // for(let i = 0; i < this.cartData.length; i++){
+    //   console.log(this.userCart[i]);
+    // }
+    console.log("in igOnInit");
+    // this.cartData = this.iceCreamDataService.getCartData();
   }
 
   search(): void {
@@ -36,14 +48,16 @@ export class CheckoutpageComponent implements OnInit {
         .then((response) => this.displayResults(response))
         .catch((message) => this.formError = message);
     }
+
   }
 
   displayResults(response): void {
+
     let resultsList = document.getElementById("resultsList");
     resultsList.innerHTML = "";
 
-    //this.searchResults = Array.from(response.result);
-    //console.log(this.searchResults);
+    this.searchResults = Array.from(response.result);
+    console.log(this.searchResults);
 
     if (this.searchResults === undefined || this.searchResults.length == 0) {
       this.formError = "No results found";
@@ -61,6 +75,10 @@ export class CheckoutpageComponent implements OnInit {
         resultsList.append(priceElement);
       }
     }
+  }
+
+  displayCart(): void{
+    
   }
 
 }

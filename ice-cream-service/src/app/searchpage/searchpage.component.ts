@@ -60,6 +60,7 @@ export class SearchpageComponent implements OnInit {
         let priceElement = document.createElement("li");
         priceElement.innerHTML = "<li><b>Price:</b> $" + this.searchResults[i].price + "</li><br/>", "text/html";
         resultsList.append(priceElement);
+
         let addToCartElement = document.createElement("button");
         addToCartElement.innerHTML =  "<button class='btn addToCart' type='button'>Add to Cart</button>", "text/html";
         addToCartElement.onclick = () => {this.cartService.addToCart(this.searchResults[i]); window.alert(this.searchResults[i].flavor + ' has been added to the cart!');};        
@@ -69,6 +70,9 @@ export class SearchpageComponent implements OnInit {
   }
 
   checkout(): void{
-    this.router.navigate(['/checkout']);
+    this.iceCreamDataService.setDataServiceCart(this.flavorList);
+    this.iceCreamDataService.checkout('/checkout', this.flavorList);
   }
+
+  
 }
