@@ -38,10 +38,6 @@ export class CheckoutpageComponent implements OnInit {
     console.log("in igOnInit");
     // this.cartData = this.iceCreamDataService.getCartData();
   }
-  
-  // getHeroes (): Observable<Object[]> {
-  //   return this.http.get<Object[]>('/search');
-  // }
 
   search(): void {
     if (!this.searchObject.searchQuery) {
@@ -52,11 +48,6 @@ export class CheckoutpageComponent implements OnInit {
         .then((response) => this.displayResults(response))
         .catch((message) => this.formError = message);
     }
-
-    // for(let i = 0; i < this.cartData.length; i++){
-    //   console.log("in search");
-    //   console.log(this.cartData[i]);
-    // }
 
   }
 
