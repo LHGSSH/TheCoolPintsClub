@@ -20,4 +20,8 @@
     <a href="/account">
         <div class="navbar-item" *ngIf="authenticationService.isLoggedIn()">{{authenticationService.getCurrentUser().fullName}}</div>
     </a>
+    <a href="/cart">
+        <div class="navbar-item" *ngIf="authenticationService.isLoggedIn()">Checkout</div>
+    </a>
+    
 </div>

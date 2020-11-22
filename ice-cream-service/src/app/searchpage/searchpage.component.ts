@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IceCreamDataService } from '../ice-cream-data.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-searchpage',
   templateUrl: './searchpage.component.html',
   styleUrls: ['./searchpage.component.css']
 })
+
 export class SearchpageComponent implements OnInit {
 
   public formError: string = '';
@@ -20,8 +22,14 @@ export class SearchpageComponent implements OnInit {
   public searchObject = {
     searchQuery: ''
   }
+  // addToCartElement: any;
 
-  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService) { }
+  // constructor(
+  //   private route: ActivatedRoute,
+  //   private cartService: CartService
+  // ) { }
+
+  constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService, private cartService: CartService) { }
 
   ngOnInit(): void {
   }
@@ -55,6 +63,30 @@ export class SearchpageComponent implements OnInit {
         let inStockElement = document.createElement("li");
         inStockElement.innerHTML = "<li><b>In Stock:</b> " + this.searchResults[i].inStock + "</li><br/>", "text/html";
         resultsList.append(inStockElement);
+        // <button (click)="addToCart(product)">Buy</button>
+
+        // <input type="button"onClick={() => this.fetchData("dfd")} value="Search" />
+        let addToCartElement = document.createElement("button");
+        addToCartElement.innerHTML =  "<button class='btn addToCart' type='button'>Add to Cart</button>", "text/html";
+        
+        addToCartElement.onclick = () => {this.cartService.addToCart(this.searchResults[i]); console.log("item added")};        
+        // addToCartElement.onclick(this.cartService.addToCart(this.searchResults[i]));
+        // addToCartElement.onclick = this.cartService.addToCart(this.searchResults[i])
+        
+        // addToCartElement.innerHTML =  "<input type='button'onClick={() => this.cartService.addToCart(this.searchResults[i]} value='Add to Cart'", "text/html";
+
+        resultsList.append(addToCartElement);
+        // onClickButton(event) {
+        //   this.onClick.emit(event);
+        // }
+        // OnClick function in icecreamdataservice, pass in inventory object, add it to a shopping cart, cart is an array of inventory items
+        
+        // addToCartElement. =  "<input type='button'onClick={() => this.cartService.addToCart(this.searchResults[i]} value='Add to Cart'", "text/html";
+
+        // addToCart(this.searchResults[i]) : void{
+        // this.cartService.addToCart(product);
+        // window.alert('Your product has been added to the cart!');
+        // }
       }
     }
   }
