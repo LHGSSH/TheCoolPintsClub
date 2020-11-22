@@ -10,8 +10,6 @@ import { Observable } from 'rxjs';
 export class IceCreamDataService {
 
   private apiBaseUrl = 'http://localhost:3000';
-  private iceCreamBaseUrl = 'http://localhost:4200';
-  private dataSeviceCart = [];
 
   constructor(private http: HttpClient) {
   }
@@ -71,38 +69,4 @@ export class IceCreamDataService {
         .then(response => response as Object)
         .catch(this.handleError);
     }
-    
-   
-  
-  public setDataServiceCart(dataSeviceCart: Object[]){
-    console.log("in setDataServiceCart");
-    this.dataSeviceCart = dataSeviceCart;
-
-    for(let i = 0; i < this.dataSeviceCart.length; i++){
-      console.log(this.dataSeviceCart[i]);
-    }
-  }
-
-  public getCartData(){
-    return this.dataSeviceCart;
-  }
-
-
-  public checkout(urlPath: string, cartData: Object[]): Object{
-
-    this.dataSeviceCart = cartData;
-
-    for(let i = 0; i < cartData.length; i++){
-      console.log(cartData[i]);
-    }
-
-    const url: string = `${this.apiBaseUrl}/${urlPath}`;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    }; 
-    return this.http
-      .post(url, cartData, httpOptions);
-  }
 }
