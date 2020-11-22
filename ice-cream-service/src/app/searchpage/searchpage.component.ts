@@ -50,7 +50,6 @@ export class SearchpageComponent implements OnInit {
     resultsList.innerHTML = "";
 
     this.searchResults = Array.from(response.result);
-    console.log(this.searchResults);
 
     if (this.searchResults === undefined || this.searchResults.length == 0) {
       this.formError = "No results found";
@@ -65,7 +64,6 @@ export class SearchpageComponent implements OnInit {
         resultsList.append(inStockElement);
         let addToCartElement = document.createElement("button");
         addToCartElement.innerHTML =  "<button class='btn addToCart' type='button'>Add to Cart</button>", "text/html";
-        
         addToCartElement.onclick = () => {this.cartService.addToCart(this.searchResults[i]); window.alert(this.searchResults[i].flavor + ' has been added to the cart!');};        
         resultsList.append(addToCartElement);
       }

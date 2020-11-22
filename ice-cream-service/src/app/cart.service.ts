@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { BROWSER_STORAGE } from './storage';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -7,21 +8,22 @@ import { HttpClient } from '@angular/common/http';
 export class CartService {
     // Inject HttpClient into the CartService constructor: 
     constructor(
-        private http: HttpClient
+        private http: HttpClient, @Inject(BROWSER_STORAGE) private storage: Storage
     ) {}
   items = [];
 
   addToCart(product) {
     this.items.push(product);
+    this.storage.setItem('cart', JSON.stringify(this.items));
   }
 
   getItems() {
-    return this.items;
+    return JSON.parse(this.storage.getItem('cart'));
   }
 
   clearCart() {
     this.items = [];
-    return this.items;
+    this.storage.removeItem('cart');
   }
 
   getShippingPrices() {
