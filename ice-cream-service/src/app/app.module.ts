@@ -19,7 +19,6 @@ import { RouterModule } from '@angular/router';
 import { ShippingComponent } from './shipping/shippingcomponent';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +33,7 @@ import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
     SearchpageComponent,
     ProductDetailsComponent,
     CartComponent,
-    ShippingComponent,
-    CheckoutpageComponent
+    ShippingComponent
   ],
   imports: [
     BrowserModule,

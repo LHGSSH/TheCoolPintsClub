@@ -9,7 +9,10 @@ app.set('port', process.env.PORT || 3000);
 
 let api = require('./controllers/api');
 
+const JSONParser = bodyParser.json();
+
 //Routes
+app.post('/checkout', JSONParser, api.checkout);
 app.use('/test', api.test);
 app.use('/inventoryTest', api.inventoryTest);
 app.use('/register', api.register);

@@ -1,4 +1,5 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const axios = require("axios");
 
 const test = createProxyMiddleware({
     target: process.env.USER_SERVICE_ENDPOINT,
@@ -46,11 +47,21 @@ const search = createProxyMiddleware({
     changeOrigin: true
 });
 
+const checkout = function(req,res){
+    console.log("checkout time");
+    console.log(req.body);
+    axios
+    .post(`${process.env.SCHEDULING_SERVICE_ENDPOINT}addSchedule`, req.body)
+    .then((response) => res.send(response.data))
+    .catch((err) => console.log(err));
+};
+
 module.exports = {
     test,
     inventoryTest,
     register,
     editUser,
     login,
-    search
+    search,
+    checkout
 };

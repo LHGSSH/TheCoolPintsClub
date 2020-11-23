@@ -12,14 +12,14 @@ require('./models/db');
 let inventoryService = require('./controllers/schedulingService');
 const schedulingService = require('./controllers/schedulingService');
 
-schedulingService.checkout();
-
 //Allow requests from the client app
 app.use('/', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     next();
 });
+
+app.post('/addSchedule', JSONParser, schedulingService.addSchedule);
 
 app.use(function (req, res, next) {
     res.status(404);

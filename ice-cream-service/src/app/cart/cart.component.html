@@ -1,11 +1,23 @@
 <app-navbar></app-navbar>
-<h3>Cart</h3>
+<h1>Cart</h1>
 
 <p>
   <a routerLink="/shipping">Shipping Prices</a>
 </p>
 
 <div class="cart-item" *ngFor="let item of items">
-  <span>{{ item.flavor }}</span>
-  <span>{{ item.price | currency }}</span>
+  <span>Flavor: {{ item.flavor }} </span>
+  <span>Price: {{ item.price | currency }}</span>
+  <br/>
 </div>
+
+<h1>User Info</h1>
+<div>
+  <span>{{ user.email }}</span>
+  <span>{{ user.fullName }}</span>
+</div>
+
+<form (submit)="checkout()">
+  <input type="text" placeholder="Enter delivery date" id="deliveryDate" name="deliveryDate" required>
+  <button type="submit">Checkout</button>
+</form>

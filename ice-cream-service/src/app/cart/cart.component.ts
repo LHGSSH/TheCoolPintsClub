@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 import { CartService } from '../cart.service';
+import { IceCreamDataService } from '../ice-cream-data.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-cart',
@@ -8,14 +12,32 @@ import { CartService } from '../cart.service';
 })
 export class CartComponent implements OnInit {
     items;
+    user: User;
+    deliveryDate: String;
 
     constructor(
-        private cartService: CartService
+        private cartService: CartService, private authService: AuthenticationService, private iceCreamDataService: IceCreamDataService, private router: Router
       ) { }
 
   ngOnInit() {
     this.items = this.cartService.getItems();
-    console.log(this.items);
+    this.user = this.authService.getCurrentUser();
+  }
+
+  checkout() {
+    let deliveryDateInput = document.getElementById("deliveryDate") as HTMLInputElement;
+    this.deliveryDate = deliveryDateInput.value;
+
+    let order = {
+      user: this.user,
+      items: this.items,
+      deliveryDate: this.deliveryDate
+    }
+
+    this.iceCreamDataService.checkoutCaller(order)
+    .then((response) => window.alert("Checkout successful!"))
+    .then(() => setTimeout(() => { this.router.navigate(['/']) }, 3000))
+    .catch((message) => window.alert("Error checking out. Please try again."));
   }
 
 }
