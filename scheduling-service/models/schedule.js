@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
 
-
 let scheduleSchema = mongoose.Schema({
 
     // account username object
     user: {},
     // array
-    cart: [{}],
+    items: [{}],
     // delivery date
     deliveryDate: String
     
 });
-mongoose.model('schedule', scheduleSchema);
+
+const Schedule = mongoose.model('Schedule', scheduleSchema);
+module.exports = { Schedule };

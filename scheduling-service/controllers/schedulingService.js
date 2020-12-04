@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schedule = mongoose.model('schedule');
+const Schedule = mongoose.model('Schedule');
 
 module.exports = {
     /**
@@ -7,17 +7,16 @@ module.exports = {
      * @param {*} req 
      * @param {*} res 
      */
-    addSchedule: async function (req,res){
+    addSchedule: function (req,res){
         console.log("schedule time");
-        let schedule = new Schedule;
-        schedule = req.body;
-        console.log(schedule);
+        console.log(req.body);
+        let newSchedule = new Schedule(req.body);
 
-        schedule.save((err) => {
+        return newSchedule.save((err) => {
             if (err) {
                 res.status(404).json(err);
             } else {
-                res.status(200);
+                res.status(200).json();
             }
         });
     }

@@ -36,7 +36,8 @@ export class CartComponent implements OnInit {
 
     this.iceCreamDataService.checkoutCaller(order)
     .then((response) => window.alert("Checkout successful!"))
-    .then(() => setTimeout(() => { this.router.navigate(['/']) }, 3000))
+    .then(() => this.cartService.clearCart())
+    .then(() => this.router.navigate(['/']))
     .catch((message) => window.alert("Error checking out. Please try again."));
   }
 

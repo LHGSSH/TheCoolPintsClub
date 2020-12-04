@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 let app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -10,6 +11,8 @@ app.set('port', process.env.PORT || 3000);
 let api = require('./controllers/api');
 
 const JSONParser = bodyParser.json();
+
+app.use(cors());
 
 //Routes
 app.post('/checkout', JSONParser, api.checkout);

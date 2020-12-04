@@ -48,8 +48,6 @@ const search = createProxyMiddleware({
 });
 
 const checkout = function(req,res){
-    console.log("checkout time");
-    console.log(req.body);
     axios
     .post(`${process.env.SCHEDULING_SERVICE_ENDPOINT}addSchedule`, req.body)
     .then((response) => res.send(response.data))
