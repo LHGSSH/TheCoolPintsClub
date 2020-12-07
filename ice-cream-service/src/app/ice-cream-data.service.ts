@@ -51,6 +51,24 @@ export class IceCreamDataService {
     return new AuthResponse();
   }
 
+  public checkoutCaller(order: Object): Promise<Object> {
+    return this.checkout('checkout', order);
+  }
+
+  private checkout(urlPath: string, order: Object): Promise<Object> {
+    const url: string = `${this.apiBaseUrl}/${urlPath}`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http
+      .post(url, order, httpOptions)
+      .toPromise()
+      .then(response => response as Object)
+      .catch(this.handleError);
+  }
+
   public searchCaller(searchObject: Object): Promise<Object> {
     return this.search('search', searchObject);
   }
