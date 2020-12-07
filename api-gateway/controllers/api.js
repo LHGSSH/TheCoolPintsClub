@@ -54,11 +54,6 @@ const checkout = function(req,res){
     ])
     .then(res.status(200).json())
     .catch((err) => res.status(404).json(err));
-    
-    // axios
-    // .post(`${process.env.SCHEDULING_SERVICE_ENDPOINT}addSchedule`, req.body)
-    // .then((response) => res.send(response.data))
-    // .catch((err) => console.log(err));
 };
 
 module.exports = {
