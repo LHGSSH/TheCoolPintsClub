@@ -6,7 +6,7 @@ let app = express();
 app.set('port', process.env.PORT || 3000);
 
 //Check user's API key.
-//app.use(require('apikey')(authentication.auth));
+app.use(require('apikey')(authentication.auth));
 
 let api = require('./controllers/api');
 

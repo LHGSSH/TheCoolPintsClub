@@ -14,16 +14,16 @@ let userSchema = mongoose.Schema({
         unique: true
     },
     fullName: String,
-    address: String//,
-    //apiToken: String
+    address: String,
+    apiToken: String
 });
 
 // Generate API token in user.js
-// userSchema.pre("save", function(next) { 
-//     let user = this; 
-//     if (!user.apiToken) user.apiToken = 
-//     randToken.generate(16); next(); 
-// });
+userSchema.pre("save", function(next) { 
+    let user = this; 
+    if (!user.apiToken) user.apiToken = 
+    randToken.generate(16); next(); 
+});
 
 userSchema.methods.validPassword = function (password) {
     return this.password === password;
