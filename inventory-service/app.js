@@ -22,6 +22,7 @@ app.use('/', (req, res, next) => {
 });
 
 app.post('/search', JSONParser, inventoryService.search);
+app.put('/decreaseStock', JSONParser, inventoryService.decreaseStock);
 
 // 404 catch-all handler (middleware)
 app.use(function (req, res, next) {

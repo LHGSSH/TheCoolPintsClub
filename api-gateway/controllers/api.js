@@ -48,10 +48,17 @@ const search = createProxyMiddleware({
 });
 
 const checkout = function(req,res){
-    axios
-    .post(`${process.env.SCHEDULING_SERVICE_ENDPOINT}addSchedule`, req.body)
-    .then((response) => res.send(response.data))
-    .catch((err) => console.log(err));
+    axios.all([
+        axios.post(`${process.env.SCHEDULING_SERVICE_ENDPOINT}addSchedule`, req.body),
+        axios.put(`${process.env.INVENTORY_SERVICE_ENDPOINT}decreaseStock`, req.body)
+    ])
+    .then(res.status(200).json())
+    .catch((err) => res.status(404).json(err));
+    
+    // axios
+    // .post(`${process.env.SCHEDULING_SERVICE_ENDPOINT}addSchedule`, req.body)
+    // .then((response) => res.send(response.data))
+    // .catch((err) => console.log(err));
 };
 
 module.exports = {
