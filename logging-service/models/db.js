@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 var credentials = require('../credentials.js');
+const { Log } = require('./log.js');
 
 // Choose which URL to use for this connection
 let dbURI = credentials.mongo.development.connectionString;
@@ -48,3 +49,4 @@ process.on('SIGTERM', () => {
     });
 });
 require('./log');
+

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schedule = mongoose.model('Schedule');
+const Log = mongoose.model('Log');
 
 module.exports = {
     
