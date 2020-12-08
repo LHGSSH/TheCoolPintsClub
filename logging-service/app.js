@@ -19,7 +19,11 @@ app.use('/', (req, res, next) => {
     next();
 });
 
-
+app.post('/addLog', JSONParser, loggingService.addLog);
+app.get('/findByService',JSONParser,loggingService.findByService);
+app.get('/findByRequestID',JSONParser,loggingService.findByRequestID);
+app.get('/findByResponseID',JSONParser,loggingService.findByResponseID);
+app.get('/findByDate',JSONParser,loggingService.findByDate);
 
 app.use(function (req, res, next) {
     res.status(404);
