@@ -34,7 +34,7 @@ module.exports = {
 
     findByRequestID: async function (req,res){
         let data = await Log.findOne({ request_ID: req.body.request_ID})
-        console.log(data);
+        
         res.json(data);
     },
 
