@@ -8,8 +8,6 @@ module.exports = {
      * @param {*} res 
      */
     addSchedule: function (req,res){
-        console.log("schedule time");
-        console.log(req.body);
         let newSchedule = new Schedule(req.body);
 
         return newSchedule.save((err) => {
