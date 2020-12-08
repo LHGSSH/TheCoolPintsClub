@@ -9,7 +9,13 @@ module.exports = {
      * @param {*} res 
      */
     addLog: function (req,res){
-        let newLog = new Log(req.body)
+        let newLog = new Log({
+            service: req.body.service,
+            route: req.body.route,
+            request_ID: req.body.request_ID,
+            response_ID: req.body.response_ID,
+            message: req.body.message
+        });
 
         newLog.save((err) => {
             if (err) {
@@ -21,27 +27,27 @@ module.exports = {
     },
 
     findByService: function (req,res){
-        let Log = new Log(Log.findOne({ service: req.body}))
+        let data = Log.findOne({ service: req.body})
 
-        res.json({Log});
+        res.json(data);
     },
 
     findByRequestID: function (req,res){
-        let Log = new Log(Log.findOne({ request_ID: req.body}))
+        let data = Log.findOne({ request_ID: req.body})
 
-        res.json({Log});
+        res.json(data);
     },
 
     findByResponseID: function (req,res){
-        let Log = new Log(Log.findOne({ response_ID: req.body}))
+        let data = Log.findOne({ response_ID: req.body})
 
-        res.json({Log});
+        res.json(data);
     },
 
     findByDate: function (req,res){
-        let Log = new Log(Log.findOne({ date: req.body}))
+        let data = Log.findOne({ date: req.body})
 
-        res.json({Log});
+        res.json(data);
     }
 
 
