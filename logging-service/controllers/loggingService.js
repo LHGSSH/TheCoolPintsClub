@@ -26,26 +26,26 @@ module.exports = {
         });
     },
 
-    findByService: function (req,res){
-        let data = Log.findOne({ service: req.body})
+    findByService: async function (req,res){
+        let data = await Log.findOne({ service: req.body.service})
+        
+        res.json(data);
+    },
+
+    findByRequestID: async function (req,res){
+        let data = await Log.findOne({ request_ID: req.body.request_ID})
+        console.log(data);
+        res.json(data);
+    },
+
+    findByResponseID: async function (req,res){
+        let data = await Log.findOne({ response_ID: req.body.response_ID})
 
         res.json(data);
     },
 
-    findByRequestID: function (req,res){
-        let data = Log.findOne({ request_ID: req.body})
-
-        res.json(data);
-    },
-
-    findByResponseID: function (req,res){
-        let data = Log.findOne({ response_ID: req.body})
-
-        res.json(data);
-    },
-
-    findByDate: function (req,res){
-        let data = Log.findOne({ date: req.body})
+    findByDate: async function (req,res){
+        let data = await Log.findOne({ date: req.body.date})
 
         res.json(data);
     }

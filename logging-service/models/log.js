@@ -5,8 +5,8 @@ let logSchema = mongoose.Schema({
     date: { type: Date, default: Date.now},
     service: String,
     route: String,
-    request_ID: String,
-    response_ID:String,
+    request_ID: Number,
+    response_ID: Number,
     message: String
     
 });
@@ -17,8 +17,8 @@ module.exports = { Log };
 /*const small = new Log({
     service: "logging-service",
     route: "/addLog",
-    request_ID: "12234",
-    response_ID: "099886",
+    request_ID: 5000,
+    response_ID: 4000,
     message: "success!"
 });
 small.save(function (err) {
