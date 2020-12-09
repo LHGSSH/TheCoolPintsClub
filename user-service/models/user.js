@@ -15,7 +15,8 @@ let userSchema = mongoose.Schema({
     },
     fullName: String,
     address: String,
-    apiToken: String
+    apiToken: String,
+    orderHistory: Object[{}]
 });
 
 // Generate API token in user.js
