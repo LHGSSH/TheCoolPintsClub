@@ -2,5 +2,5 @@ FROM node:alpine
 WORKDIR /node
 ADD . .
 RUN npm install
-EXPOSE 4000
+EXPOSE 4100
 CMD ["node", "app.js"]

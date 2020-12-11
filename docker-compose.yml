@@ -11,6 +11,7 @@ services:
       - INVENTORY_SERVICE_ENDPOINT=http://localhost:3060/
       - SCHEDULING_SERVICE_ENDPOINT=http://localhost:3090/
       - LOGGING_SERVICE_ENDPOINT=http://localhost:4000/
+      - LOGGING_LIBRARY_ENDPOINT=http://localhost:4100/
   user:
     build: ./user-service
     ports:
@@ -26,10 +27,15 @@ services:
     ports:
       - "3090:3090"
     network_mode: host
-  logging:
+  logging-service:
     build: ./logging-service
     ports:
       - "4000:4000"
+    network_mode: host
+  logging-library:
+    build: ./logging-library
+    ports:
+      - "4100:4100"
     network_mode: host
   ice-cream:
     build: ./ice-cream-service

@@ -49,7 +49,4 @@ module.exports = {
 
         res.json(data);
     }
-
-
-    
 }
