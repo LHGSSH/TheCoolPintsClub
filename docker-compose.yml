@@ -30,6 +30,7 @@ services:
     build: ./logging-service
     ports:
       - "4000:4000"
+    network_mode: host
   ice-cream:
     build: ./ice-cream-service
     ports:
