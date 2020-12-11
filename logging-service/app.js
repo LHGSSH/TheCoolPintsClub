@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
     });
 });
 
-app.use(function (error, req, res, next) {
+app.use(function (error, req, res, next) { // req res
     console.error(error.stack);
     res.status(500);
     res.json({
