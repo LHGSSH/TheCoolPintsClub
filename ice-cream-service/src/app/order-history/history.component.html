@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<h1>History</h1>
+
+<div class="history-item" *ngFor="let item of items">
+  <span>Flavor: {{ item.flavor }} </span>
+  <span>Price: {{ item.price | currency }}</span>
+  <br/>
+</div>
+
+<h1>User Info</h1>
+<div>
+  <span>{{ user.email }}</span>
+  <span>{{ user.fullName }}</span>
+</div>
