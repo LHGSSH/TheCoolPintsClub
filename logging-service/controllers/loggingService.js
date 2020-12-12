@@ -9,13 +9,7 @@ module.exports = {
      * @param {*} res 
      */
     addLog: function (req,res){
-        let newLog = new Log({
-            service: req.body.service,
-            route: req.body.route,
-            request_ID: req.body.request_ID,
-            response_ID: req.body.response_ID,
-            message: req.body.message
-        });
+        let newLog = new Log(req.body);
 
         newLog.save((err) => {
             if (err) {
@@ -49,7 +43,4 @@ module.exports = {
 
         res.json(data);
     }
-
-
-    
 }

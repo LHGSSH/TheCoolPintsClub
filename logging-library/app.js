@@ -4,21 +4,12 @@ const cors = require('cors');
 let app = express();
 
 const JSONParser = bodyParser.json();
-const urlParser = bodyParser.urlencoded({ extended: true });
 
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 4100);
 
-require('./models/db');
+const loggingLibrary = require('./controllers/loggingLibrary.js');
 
-const loggingService = require('./controllers/loggingService.js');
-
-app.use(cors());
-
-app.post('/addLog', JSONParser, loggingService.addLog);
-app.get('/findByService',JSONParser,loggingService.findByService);
-app.get('/findByRequestID',JSONParser,loggingService.findByRequestID);
-app.get('/findByResponseID',JSONParser,loggingService.findByResponseID);
-app.get('/findByDate',JSONParser,loggingService.findByDate);
+app.use('/addLog', loggingLibrary.addLog);
 
 app.use(function (req, res, next) {
     res.status(404);
