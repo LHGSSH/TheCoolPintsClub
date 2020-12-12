@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 import { ShippingComponent } from './shipping/shippingcomponent';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { HistoryComponent } from './order-history/history.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     SearchpageComponent,
     ProductDetailsComponent,
     CartComponent,
-    ShippingComponent
+    ShippingComponent, 
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
