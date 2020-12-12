@@ -16,6 +16,7 @@ const JSONParser = bodyParser.json();
 app.use(cors());
 
 //Routes
+app.use(api.log);
 app.post('/checkout', JSONParser, api.checkout);
 app.use('/test', api.test);
 app.use('/inventoryTest', api.inventoryTest);

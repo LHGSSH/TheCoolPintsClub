@@ -7,13 +7,9 @@ const JSONParser = bodyParser.json();
 
 app.set('port', process.env.PORT || 4100);
 
-require('./models/db');
-
 const loggingLibrary = require('./controllers/loggingLibrary.js');
 
-app.use(cors());
-
-app.use('/addLog', JSONParser, loggingLibrary.addLog);
+app.use('/addLog', loggingLibrary.addLog);
 
 app.use(function (req, res, next) {
     res.status(404);
