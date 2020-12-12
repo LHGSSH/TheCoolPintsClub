@@ -26,6 +26,9 @@ export class SearchpageComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router, public iceCreamDataService: IceCreamDataService, private cartService: CartService) { }
 
+  date: Date;
+  searchpageID: number = 4;
+
   ngOnInit(): void {
   }
 

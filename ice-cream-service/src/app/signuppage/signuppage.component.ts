@@ -19,6 +19,9 @@ export class SignuppageComponent implements OnInit {
     address: ''
   };
 
+  date: Date;
+  signuppageID: number = 2;
+
   constructor(private router: Router,
     private authenticationService: AuthenticationService) { }
 
@@ -41,7 +44,8 @@ export class SignuppageComponent implements OnInit {
   }
 
   doRegister(): void {
-    this.authenticationService.register(this.credentials)
+    let reqID = this.date.getTime() + this.signuppageID;
+    this.authenticationService.register(this.credentials, reqID)
       .then(() => this.router.navigateByUrl('/'))
       .catch((message) => this.formError = message);
   }

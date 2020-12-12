@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
@@ -20,6 +21,9 @@ export class AccountpageComponent implements OnInit {
     fullName: '',
     address: ''
   };
+
+  date: Date;
+  accoutpageID = 3;
   
   constructor(private http: HttpClient, private router: Router, public authenticationService: AuthenticationService) {
 
@@ -49,8 +53,9 @@ export class AccountpageComponent implements OnInit {
         delete this.credentials[property];
       }
     }
+    let reqID = this.date.getTime() + this.accoutpageID;
 
-    this.authenticationService.editUser(this.credentials)
+    this.authenticationService.editUser(this.credentials, reqID)
       .then(() => this.router.navigateByUrl('/'))
       .catch((message) => this.formError = message);
   }

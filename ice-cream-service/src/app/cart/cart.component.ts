@@ -14,6 +14,8 @@ export class CartComponent implements OnInit {
     items;
     user: User;
     deliveryDate: String;
+    date: Date;
+    cartComponentID: number = 9;
 
     constructor(
         private cartService: CartService, private authService: AuthenticationService, private iceCreamDataService: IceCreamDataService, private router: Router
@@ -34,7 +36,9 @@ export class CartComponent implements OnInit {
       deliveryDate: this.deliveryDate
     }
 
-    this.iceCreamDataService.checkoutCaller(order)
+    let resID =  this.date.getTime() + this.cartComponentID;
+
+    this.iceCreamDataService.checkoutCaller(order, resID)
     .then((response) => window.alert("Checkout successful!"))
     .then(() => this.cartService.clearCart())
     .then(() => this.router.navigate(['/']))

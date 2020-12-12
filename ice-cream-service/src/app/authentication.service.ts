@@ -21,8 +21,8 @@ export class AuthenticationService {
       return { email, fullName } as User;
     }
   }
-  public login(user: User): Promise<any> {
-    return this.iceCreamDataService.login(user)
+  public login(user: User, reqID: number): Promise<any> {
+    return this.iceCreamDataService.login(user, reqID)
       .then((authResp: AuthResponse) => this.saveToken(authResp.token));
   }
   public isLoggedIn(): boolean {
@@ -37,12 +37,12 @@ export class AuthenticationService {
   public logout(): void {
     this.storage.removeItem('ice-cream-token');
   }
-  public editUser(user: User): Promise<any> {
-    return this.iceCreamDataService.editUser(user)
+  public editUser(user: User, reqID: number): Promise<any> {
+    return this.iceCreamDataService.editUser(user, reqID)
     .then((authResp: AuthResponse) => this.saveToken(authResp.token));
   }
-  public register(user: User): Promise<any> {
-    return this.iceCreamDataService.register(user)
+  public register(user: User, reqID: number): Promise<any> {
+    return this.iceCreamDataService.register(user, reqID)
       .then((authResp: AuthResponse) => this.saveToken(authResp.token));
   }
 }

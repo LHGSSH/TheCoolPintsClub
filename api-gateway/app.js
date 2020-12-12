@@ -12,6 +12,8 @@ app.set('port', process.env.PORT || 3000);
 let api = require('./controllers/api');
 
 const JSONParser = bodyParser.json();
+const reqID;
+const resID;
 
 app.use(cors());
 

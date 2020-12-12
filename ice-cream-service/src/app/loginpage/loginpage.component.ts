@@ -10,6 +10,8 @@ import { AuthenticationService } from '../authentication.service';
 export class LoginpageComponent implements OnInit {
 
   public formError: string = '';
+  date: Date;
+  loginpageID: number = 1;
 
   public credentials = {
     username: '',
@@ -37,7 +39,9 @@ export class LoginpageComponent implements OnInit {
   }
 
   doLogin(): void {
-    this.authenticationService.login(this.credentials)
+    let reqID = this.date.getTime() + this.loginpageID;
+    console.log(reqID);
+    this.authenticationService.login(this.credentials, reqID)
       .then(() => this.router.navigateByUrl('/'))
       .catch((message) => this.formError = message);
   }
